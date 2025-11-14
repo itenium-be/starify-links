@@ -53,31 +53,61 @@ function loadDirectActivationList() {
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label class="form-label">Observe Selector <small>(optional)</small></label>
+                  <label class="form-label">
+                    Observe Selector <small>(optional)</small>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle ms-1" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="A CSS Selector to observe: badges get added whenever the matching elements change. For example useful when links are added after the initial page load.">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                  </label>
                   <input type="text" class="form-control da-observe" value="${escapeAttr(activation.observe || '')}" data-index="${index}" placeholder="CSS selector to observe for new links">
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label class="form-label">Extra Badge Selector <small>(optional)</small></label>
-                  <input type="text" class="form-control da-extra-badge" value="${escapeAttr(activation.extraBadgeSelector || '')}" data-index="${index}" placeholder="Additional places to show badges">
+                  <label class="form-label">
+                    Extra Badge Selector <small>(optional)</small>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle ms-1" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="By default each badge is only added once. For some pages this adds the badge in a hard-to-see location. Use this CSS selector to add the same badge multiple times.">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                  </label>
+                  <input type="text" class="form-control da-extra-badge" value="${escapeAttr(activation.extraBadgeSelector || '')}" data-index="${index}" placeholder="CSS Selector with place(s) to force duplicate badges">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4 mb-3">
                   <div class="form-check">
                     <input class="form-check-input da-observe-duplicates" type="checkbox" ${activation.observeAllowDuplicates !== false ? 'checked' : ''} data-index="${index}">
-                    <label class="form-check-label">Allow Duplicate Badges</label>
+                    <label class="form-check-label">
+                      Allow Duplicate Badges for 'Observe Selector'
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle ms-1" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="When true it will render duplicate badges in the 'Observe Selector'.">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </label>
                   </div>
                 </div>
                 <div class="col-md-4 mb-3">
                   <div class="form-check">
                     <input class="form-check-input da-replace-text" type="checkbox" ${activation.replaceText !== false ? 'checked' : ''} data-index="${index}">
-                    <label class="form-check-label">Replace Link Text</label>
+                    <label class="form-check-label">
+                      Shorten GitHub Link Text
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle ms-1" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="When false, do not replace the GitHub link text. This is disabled on npmjs.com for example, because it breaks badge adding after searching and navigating to a different package.">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </label>
                   </div>
                 </div>
                 <div class="col-md-4 mb-3">
                   <div class="form-check">
                     <input class="form-check-input da-observe-nav" type="checkbox" ${activation.observeNavigation === true ? 'checked' : ''} data-index="${index}">
-                    <label class="form-check-label">Observe Navigation</label>
+                    <label class="form-check-label">
+                      Observe Navigation
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle ms-1" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="Some sites are SPA and they change location without reloading the page. Set to true to listen to location changes and remove/re-add all the badges when it does.">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -106,6 +136,11 @@ function loadDirectActivationList() {
 
     document.querySelectorAll('.da-delete').forEach(btn => {
       btn.addEventListener('click', handleDelete);
+    });
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+      new (window as any).bootstrap.Tooltip(tooltipTriggerEl);
     });
   });
 }
