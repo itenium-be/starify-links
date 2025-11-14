@@ -31,7 +31,10 @@ import { ThunderstoreLikesMatcher } from "./ThunderstoreLikesMatcher";
 import { TwitchStatusMatcher } from "./TwitchStatusMatcher";
 import { TwitterFollowMatcher } from "./TwitterFollowMatcher";
 import { TwitterUrlMatcher } from "./TwitterUrlMatcher";
-import { VsMarketplaceMatcher } from "./VsMarketplaceMatcher";
+import { VsMarketplaceInstallsMatcher } from "./VsMarketplaceMatcherInstalls";
+import { VsMarketplaceDownloadsMatcher } from "./VsMarketplaceDownloadsMatcher";
+import { VsMarketplaceRatingMatcher } from "./VsMarketplaceRatingMatcher";
+import { VsMarketplaceLastUpdatedMatcher } from "./VsMarketplaceLastUpdatedMatcher";
 import { WordPressPluginMatcher } from "./WordPressPluginMatcher";
 import { WordPressPluginRatingMatcher } from "./WordPressPluginRatingMatcher";
 import { WordPressPluginStarsMatcher } from "./WordPressPluginStarsMatcher";
@@ -79,7 +82,10 @@ export const badgesConfig: BadgeMatcher[] = [
   new WordPressThemeDownloadsMatcher(),
   new WordPressThemeRatingMatcher(),
   new WordPressThemeStarsMatcher(),
-  new VsMarketplaceMatcher(),
+  new VsMarketplaceInstallsMatcher(),
+  new VsMarketplaceDownloadsMatcher(),
+  new VsMarketplaceRatingMatcher(),
+  new VsMarketplaceLastUpdatedMatcher(),
   new ChromeWebStoreMatcher(),
   new ChromeWebStoreRatingMatcher(),
   new ChromeWebStoreStarsMatcher(),

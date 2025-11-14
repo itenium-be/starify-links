@@ -252,10 +252,25 @@ export const badgesUserConfig: BadgesUserConfig = {
   },
 
 
-  vsMarketplace: {
-    enabled: false,
+  vsMarketplaceInstalls: {
+    enabled: true,
     style: 'social' as const,
     label: 'Installs',
+  },
+  vsMarketplaceDownloads: {
+    enabled: false,
+    style: 'social' as const,
+    label: 'Downloads',
+  },
+  vsMarketplaceRating: {
+    enabled: false,
+    style: 'social' as const,
+    label: 'Rating',
+  },
+  vsMarketplaceLastUpdated: {
+    enabled: false,
+    style: 'social' as const,
+    label: 'Updated',
   },
 
 

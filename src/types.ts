@@ -169,7 +169,13 @@ export type BadgesUserConfig = {
   /** See: https://shields.io/badges/word-press-theme-stars */
   wordPressThemeStars: BadgeConfig;
   /** See: https://shields.io/badges/visual-studio-marketplace-installs */
-  vsMarketplace: BadgeConfig;
+  vsMarketplaceInstalls: BadgeConfig;
+  /** See: https://shields.io/badges/visual-studio-marketplace-downloads */
+  vsMarketplaceDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/visual-studio-marketplace-rating */
+  vsMarketplaceRating: BadgeConfig;
+  /** See: https://shields.io/badges/visual-studio-marketplace-last-updated */
+  vsMarketplaceLastUpdated: BadgeConfig;
   /** See: https://shields.io/badges/chrome-web-store-users */
   chromeWebStore: BadgeConfig;
   /** See: https://shields.io/badges/chrome-web-store-rating */
