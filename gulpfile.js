@@ -3,6 +3,7 @@ const zip = require('gulp-zip');
 const del = require('del');
 const { exec } = require('child_process');
 const { promisify } = require('util');
+const fs = require('fs');
 
 const execAsync = promisify(exec);
 
@@ -33,10 +34,28 @@ const copyBootstrapJs = () => gulp.src('./node_modules/bootstrap/dist/js/bootstr
 gulp.task('copy', gulp.parallel(copyRootFiles, copyOptionsFiles, copyBootstrapCss, copyBootstrapJs));
 
 
-gulp.task('zip', function() {
-	return gulp.src('./dist/**')
+gulp.task('zip', function(done) {
+	// Read original manifest
+	const originalManifest = fs.readFileSync('./dist/manifest.json', 'utf-8');
+	const manifest = JSON.parse(originalManifest);
+
+	// Remove reload command for production
+	if (manifest.commands && manifest.commands.reload) {
+		delete manifest.commands.reload;
+	}
+
+	// Write modified manifest
+	fs.writeFileSync('./dist/manifest.json', JSON.stringify(manifest, null, 4));
+
+	// Create zip
+	gulp.src(['./dist/**', '!./dist/*.zip'])
 		.pipe(zip('starify-links.zip'))
-		.pipe(gulp.dest('./dist'));
+		.pipe(gulp.dest('./dist'))
+		.on('end', () => {
+			// Restore original manifest
+			fs.writeFileSync('./dist/manifest.json', originalManifest);
+			done();
+		});
 });
 
 
