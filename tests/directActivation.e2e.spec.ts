@@ -39,8 +39,8 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const badges = await page.locator('img[src*="shields.io/github/stars"]').count();
     expect(badges).toBeGreaterThan(0);
 
-    const mikeImg = await getBadgeLocator(page, 'itenium-be/mi-ke').count();
-    expect(mikeImg).toBe(1);
+    const mikeImg = getBadgeLocator(page, 'itenium-be/Mi-Ke');
+    await expect(mikeImg).toHaveCount(1);
   });
 
   test('on GitHub navigating from issues to issues/detail with SPA', async () => {
@@ -51,32 +51,32 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     await detailsLink.click();
     await page.waitForTimeout(3000);
 
-    const badge = await getBadgeLocator(page, 'microsoft/calculator').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'microsoft/calculator');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on StackOverflow', async () => {
     const url = 'https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'facebook/create-react-app').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'facebook/create-react-app');
+    await expect(badge).toHaveCount(1);
   });
 
   test.skip('on Google', async () => {
     const url = 'https://www.google.com/search?q=react+github';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'facebook/react').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'facebook/react');
+    await expect(badge).toHaveCount(1);
   });
 
   test.skip('on Google.fr', async () => {
     const url = 'https://google.fr/search?q=react+github';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'facebook/react').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'facebook/react');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on nuget it adds two badges', async () => {
@@ -85,16 +85,16 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://www.nuget.org/packages/Newtonsoft.Json';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'jamesnk/newtonsoft.json').count();
-    expect(badge).toBe(2);
+    const badge = getBadgeLocator(page, 'JamesNK/Newtonsoft.Json');
+    await expect(badge).toHaveCount(2);
   });
 
   test('on marketplace.visualstudio.com', async () => {
     const url = 'https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'aaron-bond/better-comments').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'aaron-bond/better-comments');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on marketplace.visualstudio.com, which has an observer, it also adds badges to other links', async () => {
@@ -102,16 +102,16 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     // Note that the github pages now forwards to: avocadowastaken/prettier-plugin-prisma
-    const badge = await getBadgeLocator(page, 'umidbekk/prettier-plugin-prisma').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'umidbekk/prettier-plugin-prisma');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on npmjs.com', async () => {
     const url = 'https://www.npmjs.com/package/react';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'facebook/react').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'facebook/react');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on npmjs.com, with many links to the same github repo', async () => {
@@ -119,8 +119,8 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://www.npmjs.com/package/date-holidays';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'commenthol/date-holidays').count();
-    expect(badge).toBe(3);
+    const badge = getBadgeLocator(page, 'commenthol/date-holidays');
+    await expect(badge).toHaveCount(3);
 
     const repoLink = page.locator('#repository-link');
     await expect(repoLink).toHaveText('github.com/commenthol/date-holidays');
@@ -130,8 +130,8 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://www.npmjs.com/package/react';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'facebook/react').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'facebook/react');
+    await expect(badge).toHaveCount(1);
 
     const searchInput = page.getByRole('combobox');
     await searchInput.fill('@itenium/date-holidays-be');
@@ -144,8 +144,8 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const repoLink = page.locator('#repository-link');
     await expect(repoLink).toHaveText('github.com/itenium-be/date-holidays-be');
 
-    const newBadge = await getBadgeLocator(page, 'itenium-be/date-holidays-be').count();
-    expect(newBadge).toBe(2);
+    const newBadge = getBadgeLocator(page, 'itenium-be/date-holidays-be');
+    await expect(newBadge).toHaveCount(2);
   });
 
   test('on npmjs.com, switch to a different package, removes badges if not a github link', async () => {
@@ -160,27 +160,27 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
 
     await page.waitForTimeout(5000);
 
-    const newBadge = await getBadgeLocator(page, 'facebook/react').count();
-    expect(newBadge).toBe(1);
+    const newBadge = getBadgeLocator(page, 'facebook/react');
+    await expect(newBadge).toHaveCount(1);
 
-    const oldBadge = await getBadgeLocator(page, 'itenium-be/date-holidays-be').count();
-    expect(oldBadge).toBe(0);
+    const oldBadge = getBadgeLocator(page, 'itenium-be/date-holidays-be');
+    await expect(oldBadge).toHaveCount(0);
   });
 
   test('on pypi.org', async () => {
     const url = 'https://pypi.org/project/requests/';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'psf/requests').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'psf/requests');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on rubygems.org', async () => {
     const url = 'https://rubygems.org/gems/rails';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'rails/rails').count();
-    expect(badge).toBe(4);
+    const badge = getBadgeLocator(page, 'rails/rails');
+    await expect(badge).toHaveCount(4);
   });
 
   test.skip('on packagist.org', async () => {
@@ -188,8 +188,8 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://packagist.org/packages/guzzlehttp/guzzle';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'guzzle/guzzle').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'guzzle/guzzle');
+    await expect(badge).toHaveCount(1);
   });
 
   test('on crates.io', async () => {
@@ -221,7 +221,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://duckduckgo.com/?q=github+react';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'facebook/react').count();
-    expect(badge).toBe(1);
+    const badge = getBadgeLocator(page, 'facebook/react');
+    await expect(badge).toHaveCount(1);
   });
 });

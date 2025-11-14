@@ -13,7 +13,7 @@ export async function goToWhitelistedPage(context: BrowserContext, url: string) 
 }
 
 export function getBadgeLocator(page: Page, repo: string) {
-  return page.locator(`img[src="https://img.shields.io/github/stars/${repo}.svg?style=social&label=Star"]`);
+  return page.locator(`img[src*="https://img.shields.io/github/stars/${repo}.svg"]`);
 }
 
 

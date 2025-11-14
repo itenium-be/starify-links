@@ -10,17 +10,17 @@ test.describe('Google Rendering against html fixtures', () => {
   test('should add badge to Google search results', async ({ page }) => {
     await setupTestPage(page, 'google.html');
 
-    const reactBadge = await page.locator('img[src*="facebook/react.svg"]').count();
-    expect(reactBadge).toBe(1);
+    const reactBadge = page.locator('img[src*="facebook/react.svg"]');
+    await expect(reactBadge).toHaveCount(1);
 
-    const reactNativeBadge = await page.locator('img[src*="facebook/react-native.svg"]').count();
-    expect(reactNativeBadge).toBe(1);
+    const reactNativeBadge = page.locator('img[src*="facebook/react-native.svg"]');
+    await expect(reactNativeBadge).toHaveCount(1);
   });
 
   test('should add badge to the sublink of create-react-app', async ({ page }) => {
     await setupTestPage(page, 'google.html');
 
-    const reactBadge = await page.locator('img[src*="facebook/create-react-app.svg"]').count();
-    expect(reactBadge).toBe(1);
+    const reactBadge = page.locator('img[src*="facebook/create-react-app.svg"]');
+    await expect(reactBadge).toHaveCount(1);
   });
 });
