@@ -115,7 +115,7 @@ function loadDirectActivationList() {
 function updateLabelDisplay(e: Event) {
   const target = e.target as HTMLInputElement;
   const index = target.dataset.index!;
-  const item = document.querySelector(`[data-index="${index}"]`) as HTMLElement;
+  const item = document.querySelector(`.accordion-item[data-index="${index}"]`) as HTMLElement;
   const labelInput = item.querySelector('.da-label') as HTMLInputElement;
   const labelDisplay = item.querySelector('.da-label-display') as HTMLElement;
   labelDisplay.textContent = labelInput.value;
@@ -124,7 +124,7 @@ function updateLabelDisplay(e: Event) {
 function updateUrlDisplay(e: Event) {
   const target = e.target as HTMLInputElement;
   const index = target.dataset.index!;
-  const item = document.querySelector(`[data-index="${index}"]`) as HTMLElement;
+  const item = document.querySelector(`.accordion-item[data-index="${index}"]`) as HTMLElement;
   const urlInput = item.querySelector('.da-url') as HTMLInputElement;
   const urlDisplay = item.querySelector('.da-url-display') as HTMLElement;
   urlDisplay.textContent = urlInput.value;
@@ -179,11 +179,17 @@ function saveDirectActivationConfig() {
   chrome.storage.sync.get(['directActivationConfig'], (result) => {
     const config = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
 
-    document.querySelectorAll('[data-index]').forEach(item => {
+    const items = document.querySelectorAll('#directActivationList .accordion-item');
+    console.log('Found accordion items:', items.length);
+
+    items.forEach(item => {
       const el = item as HTMLElement;
       const index = parseInt(el.dataset.index!);
 
-      if (index >= config.length) return;
+      if (isNaN(index) || index >= config.length) {
+        console.warn('Invalid or out of bounds index:', index, 'config length:', config.length);
+        return;
+      }
 
       const enabledCheckbox = el.querySelector('.da-enabled') as HTMLInputElement;
       const labelInput = el.querySelector('.da-label') as HTMLInputElement;
@@ -216,8 +222,11 @@ function saveDirectActivationConfig() {
       config[index].observeNavigation = observeNavCheckbox.checked ? true : undefined;
     });
 
-    chrome.storage.sync.set({ directActivationConfig: serializeDirectActivationConfig(config) }, () => {
-      console.log('Direct Activation configuration saved:', config);
+    console.log('Saving config:', config);
+    const serialized = serializeDirectActivationConfig(config);
+
+    chrome.storage.sync.set({ directActivationConfig: serialized }, () => {
+      console.log('Direct Activation configuration saved successfully');
     });
   });
 }
