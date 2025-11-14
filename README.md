@@ -22,6 +22,8 @@ npm run watch
 ```
 
 Do need to click reload in `chrome://extensions` after each change to the code.
+This can now be done with `Control + M`.
+
 
 ## Tests
 
