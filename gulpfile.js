@@ -18,19 +18,19 @@ gulp.task('typescript', async function() {
 });
 
 
-gulp.task('copy', function() {
-	gulp.src(['./favicon.png', './manifest.json', 'background.js'])
-		.pipe(gulp.dest('./dist'));
+const copyRootFiles = () => gulp.src(['./favicon.png', './manifest.json', './background.js'])
+	.pipe(gulp.dest('./dist'));
 
-	gulp.src(['./src/options/options.html', './src/options/options.css'])
-		.pipe(gulp.dest('./dist'));
+const copyOptionsFiles = () => gulp.src(['./src/options/options.html', './src/options/options.css'])
+	.pipe(gulp.dest('./dist'));
 
-	gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
-		.pipe(gulp.dest('./dist'));
+const copyBootstrapCss = () => gulp.src('./node_modules/bootstrap/dist/css/bootstrap.min.css')
+	.pipe(gulp.dest('./dist'));
 
-	return gulp.src('./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
-		.pipe(gulp.dest('./dist'));
-});
+const copyBootstrapJs = () => gulp.src('./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+	.pipe(gulp.dest('./dist'));
+
+gulp.task('copy', gulp.parallel(copyRootFiles, copyOptionsFiles, copyBootstrapCss, copyBootstrapJs));
 
 
 gulp.task('zip', function() {
