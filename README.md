@@ -77,6 +77,7 @@ chrome://extensions/
   - [Link with .git](https://github.com/itenium-be/Git-NumberedAdd.git)
   - [Unexisting Repo](https://github.com/itenium-be/RepoNotFound): Would need to do a XMLHttpRequest so the returned content svg content can be examined for "Repo not found"
 - [StackOverflow](https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm)
+  - [StackExchange](https://codegolf.stackexchange.com/questions/281871/output-your-user-id)
 - Package Managers
   - [npmjs](https://www.npmjs.com/package/react)
   - [nuget](https://www.nuget.org/packages/Newtonsoft.Json)
