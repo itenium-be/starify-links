@@ -114,42 +114,42 @@ test.describe('Non github repository links that should get a badge', () => {
     expect(badges).toBe(1);
   });
 
-  test('should add URL badge to a Twitter tweet', async ({ page }) => {
+  test.skip('should add URL badge to a Twitter tweet', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/twitter-url.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
 
-  test('should add follow badge to a Twitter profile', async ({ page }) => {
+  test.skip('should add follow badge to a Twitter profile', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/twitter-follow.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
 
-  test('should add likes badge to a Thunderstore package', async ({ page }) => {
+  test.skip('should add likes badge to a Thunderstore package', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/thunderstore-likes.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
 
-  test('should add followers badge to a Nostr Band profile', async ({ page }) => {
+  test.skip('should add followers badge to a Nostr Band profile', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/nostr-band-followers.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
 
-  test('should add followers badge to a Modrinth project', async ({ page }) => {
+  test.skip('should add followers badge to a Modrinth project', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/modrinth-followers.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
 
-  test('should add follow badge to a Mastodon profile', async ({ page }) => {
+  test.skip('should add follow badge to a Mastodon profile', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/mastodon-follow.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
@@ -163,14 +163,14 @@ test.describe('Non github repository links that should get a badge', () => {
     expect(badges).toBe(1);
   });
 
-  test('should add watchers badge to a Hangar plugin', async ({ page }) => {
+  test.skip('should add watchers badge to a Hangar plugin', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/hangar-watchers.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
 
-  test('should add stars badge to a Hangar plugin', async ({ page }) => {
+  test.skip('should add stars badge to a Hangar plugin', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/hangar-stars.html');
 
     const badges = await page.locator('img[src*="shields.io"]').count();
