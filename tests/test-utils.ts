@@ -31,7 +31,7 @@ export async function setupTestPage(page: Page, fixtureName: string) {
 
   // Add our content script
   if (!scriptContent) {
-    const scriptPath = path.join(__dirname, '../starify-links.user.js');
+    const scriptPath = path.join(__dirname, '../dist/starify-links.user.js');
     scriptContent = fs.readFileSync(scriptPath, 'utf-8');
   }
   await page.addScriptTag({ content: scriptContent });
@@ -66,6 +66,19 @@ async function mockChromeAPI(page: Page) {
               console.log('Chrome runtime mock: message listener registered');
               // Store the callback so tests can trigger it if needed
               window.__chromeMessageCallback = callback;
+            }
+          }
+        },
+        storage: {
+          sync: {
+            get: function(keys, callback) {
+              console.log('Chrome storage mock: get called with keys', keys);
+              // Return empty object so defaults are used
+              callback({});
+            },
+            set: function(items, callback) {
+              console.log('Chrome storage mock: set called with items', items);
+              if (callback) callback();
             }
           }
         }
