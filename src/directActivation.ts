@@ -30,11 +30,25 @@ export async function getDirectActivationConfig(): Promise<DirectActivation[]> {
 
   return new Promise((resolve) => {
     chrome.storage.sync.get(['directActivationConfig'], (result) => {
-      const config = result.directActivationConfig || activateDirectlyOn;
+      const config = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
       cachedDirectActivationConfig = config;
       resolve(config);
     });
   });
+}
+
+export function serializeDirectActivationConfig(config: DirectActivation[]): any[] {
+  return config.map(item => ({
+    ...item,
+    url: typeof item.url === 'string' ? item.url : { __regex: item.url.source, __flags: item.url.flags }
+  }));
+}
+
+export function deserializeDirectActivationConfig(config: any[]): DirectActivation[] {
+  return config.map(item => ({
+    ...item,
+    url: typeof item.url === 'string' ? item.url : new RegExp(item.url.__regex || item.url.source || item.url, item.url.__flags || item.url.flags || '')
+  }));
 }
 
 export async function findConfig() {
