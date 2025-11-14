@@ -1,7 +1,7 @@
 Starify Links
 =============
 
-- [Blog post](https://itenium.be/blog/javascript/starify-github-links/)
+- [Blog post](https://itenium.be/blog/javascript/starify-links/)
 - [Chrome extension](https://chrome.google.com/webstore/detail/starify-github-repo-links/kpficnopciffopkhjpckhkgmnlakcmig)
 
 Add Stars badges to GitHub links, Reddit users, Wordpress plugins, Youtube channels, Chrome/Firefox add-ins, ...  
