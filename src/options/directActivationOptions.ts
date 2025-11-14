@@ -38,29 +38,27 @@ function loadDirectActivationList() {
             <div class="accordion-body">
               <div class="mb-3">
                 <label class="form-label">Label</label>
-                <input type="text" class="form-control da-label" value="${escapeHtml(activation.label)}" data-index="${index}">
+                <input type="text" class="form-control da-label" value="${escapeAttr(activation.label)}" data-index="${index}">
               </div>
               <div class="mb-3">
                 <label class="form-label">URL Pattern</label>
                 <div class="input-group">
-                  <input type="text" class="form-control da-url" value="${escapeHtml(urlValue)}" data-index="${index}">
+                  <input type="text" class="form-control da-url" value="${escapeAttr(urlValue)}" data-index="${index}">
                   <div class="form-check form-switch ms-3 d-flex align-items-center">
                     <input class="form-check-input da-url-regex" type="checkbox" ${isRegex ? 'checked' : ''} data-index="${index}">
                     <label class="form-check-label ms-2">RegExp</label>
                   </div>
                 </div>
-                <small class="form-text text-muted">String: exact prefix match. RegExp: /pattern/</small>
+                <small class="form-text text-muted"><b>String</b>: exact prefix match. <b>RegExp</b>: <code>^https:\\/\\/itenium\\.(be|com)</code></small>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label class="form-label">Observe Selector (optional)</label>
-                  <input type="text" class="form-control da-observe" value="${escapeHtml(activation.observe || '')}" data-index="${index}">
-                  <small class="form-text text-muted">CSS selector to observe for new links</small>
+                  <label class="form-label">Observe Selector <small>(optional)</small></label>
+                  <input type="text" class="form-control da-observe" value="${escapeAttr(activation.observe || '')}" data-index="${index}" placeholder="CSS selector to observe for new links">
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label class="form-label">Extra Badge Selector (optional)</label>
-                  <input type="text" class="form-control da-extra-badge" value="${escapeHtml(activation.extraBadgeSelector || '')}" data-index="${index}">
-                  <small class="form-text text-muted">Additional places to show badges</small>
+                  <label class="form-label">Extra Badge Selector <small>(optional)</small></label>
+                  <input type="text" class="form-control da-extra-badge" value="${escapeAttr(activation.extraBadgeSelector || '')}" data-index="${index}" placeholder="Additional places to show badges">
                 </div>
               </div>
               <div class="row">
@@ -253,4 +251,13 @@ function escapeHtml(text: string): string {
   const div = document.createElement('div');
   div.textContent = text;
   return div.innerHTML;
+}
+
+function escapeAttr(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
