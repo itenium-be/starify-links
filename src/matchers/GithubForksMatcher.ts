@@ -6,7 +6,7 @@ const badgeUrlTemplate = 'https://img.shields.io/github/forks/{userName}/{repoNa
 
 export class GithubForksMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {
-    const match = link.href.match(/^https?:\/\/(?:www\.)?github\.com\/([^/#]+)\/([^/#]+)/);
+    const match = link.href.match(/^https?:\/\/(?:www\.)?github\.com\/([^/#]+)\/([^/#]+)/i);
     if (match) {
       const userName = match[1];
       const repoName = match[2].replace(/\.git$/i, '');
