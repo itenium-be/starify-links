@@ -2,9 +2,8 @@ import { getCurrentUrl, googleUrl, shieldsConfig } from "./config";
 import { findConfig } from "./directActivation";
 import { BadgeInfo } from "./types";
 
-const currentUrl = getCurrentUrl();
-
 export async function badgeRenderer(badge: BadgeInfo) {
+  const currentUrl = getCurrentUrl();
   const urlConfig = await findConfig();
 
   // Shorten link text
