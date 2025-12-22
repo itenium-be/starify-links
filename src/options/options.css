@@ -49,3 +49,8 @@ body {
     font-weight: 600;
     color: #212529;
 }
+
+#versionInfo {
+    font-weight: 100;
+    font-size: 0.7em;
+}
