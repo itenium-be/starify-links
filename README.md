@@ -17,7 +17,7 @@ Activates directly on `activateDirectlyOn` array (in `src/directActivation.ts`).
 
 ```bash
 npm install
-npm run typescript
+npm run build
 npm run watch
 ```
 
@@ -63,7 +63,7 @@ chrome://extensions/
 
 - Turn on "Developer mode"
 - Load unpacked
-- Select this folder
+- Select the `dist` folder
 
 
 ## Test Urls
