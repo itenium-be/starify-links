@@ -36,8 +36,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://github.com/itenium-be/starify-links';
     const page = await goToWhitelistedPage(context, url);
 
-    const badges = await page.locator('img[src*="shields.io/github/stars"]').count();
-    expect(badges).toBeGreaterThan(0);
+    await expect(page.locator('img[src*="shields.io/github/stars"]').first()).toBeVisible();
 
     const mikeImg = getBadgeLocator(page, 'itenium-be/Mi-Ke');
     await expect(mikeImg).toHaveCount(1);
