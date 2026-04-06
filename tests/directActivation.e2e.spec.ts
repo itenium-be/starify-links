@@ -33,7 +33,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
   });
 
   test('on GitHub', async () => {
-    const url = 'https://github.com/itenium-be/github-stars-links';
+    const url = 'https://github.com/itenium-be/starify-links';
     const page = await goToWhitelistedPage(context, url);
 
     const badges = await page.locator('img[src*="shields.io/github/stars"]').count();
