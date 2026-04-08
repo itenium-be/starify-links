@@ -16,9 +16,9 @@ Activates directly on `activateDirectlyOn` array (in `src/directActivation.ts`).
 # Development
 
 ```bash
-npm install
-npm run build
-npm run watch
+bun install
+bun run build
+bun run watch
 ```
 
 Do need to click reload in `chrome://extensions` after each change to the code.
@@ -29,14 +29,14 @@ This can now be done with `Control + M`.
 
 ```bash
 # Run tests against our custom made html files
-npm run test:unit
+bun run test:unit
 
 # Run tests against live whitelisted websites
-npm run test:e2e
+bun run test:e2e
 
 # Debug tests
-npm run test:ui
-npm run test:debug
+bun run test:ui
+bun run test:debug
 ```
 
 
@@ -48,7 +48,7 @@ Publishing to the [Chrome Web Store](https://chrome.google.com/webstore/detail/k
 - `gulp` will create `./dist/github-stars.zip`
 
 ```bash
-npm run build
+bun run build
 ```
 
 Upload it to [the store](https://chromewebstore.google.com/) and pick 3 dots > "Developer Dashboard".

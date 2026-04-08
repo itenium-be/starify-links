@@ -22,11 +22,11 @@
   "scripts": {
     "build": "gulp",
     "watch": "gulp watch",
-    "test": "npm run build && playwright test",
-    "test:unit": "npm run build && playwright test --project=unit",
-    "test:e2e": "npm run build && playwright test --project=e2e",
-    "test:ui": "npm run build && playwright test --ui",
-    "test:debug": "npm run build && playwright test --debug"
+    "test": "bun run build && bunx playwright test",
+    "test:unit": "bun run build && bunx playwright test --project=unit",
+    "test:e2e": "bun run build && bunx playwright test --project=e2e",
+    "test:ui": "bun run build && bunx playwright test --ui",
+    "test:debug": "bun run build && bunx playwright test --debug"
   },
   "repository": {
     "type": "git",
