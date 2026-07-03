@@ -9,7 +9,7 @@ export class NostrBandFollowersMatcher implements BadgeMatcher {
       const pubkey = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://nostr.band/${pubkey}`,
         badgeUrl: badgeUrlTemplate.replace('{pubkey}', pubkey),
         badgeType: 'nostrBandFollowers',
       };

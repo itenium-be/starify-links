@@ -10,7 +10,7 @@ export class ThunderstoreLikesMatcher implements BadgeMatcher {
       const packageName = match[2];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://thunderstore.io/${namespace.toLowerCase()}/${packageName.toLowerCase()}`,
         badgeUrl: badgeUrlTemplate.replace('{namespace}', namespace).replace('{packageName}', packageName),
         badgeType: 'thunderstoreLikes',
       };

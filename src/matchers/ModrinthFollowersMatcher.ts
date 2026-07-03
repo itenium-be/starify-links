@@ -9,7 +9,7 @@ export class ModrinthFollowersMatcher implements BadgeMatcher {
       const projectId = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://modrinth.com/${projectId.toLowerCase()}`,
         badgeUrl: badgeUrlTemplate.replace('{projectId}', projectId),
         badgeType: 'modrinthFollowers',
       };

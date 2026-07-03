@@ -9,7 +9,7 @@ export class YoutubeChannelViewsMatcher implements BadgeMatcher {
       const channelId = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://youtube.com/channel/${channelId}`,
         badgeUrl: badgeUrlTemplate.replace('{channelId}', encodeURIComponent(channelId)),
         badgeType: 'youtubeChannelViews',
       };

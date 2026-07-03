@@ -4,12 +4,12 @@ const badgeUrlTemplate = 'https://img.shields.io/hangar/watchers/{slug}';
 
 export class HangarWatchersMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {
-    const match = link.href.match(/^https?:\/\/(?:www\.)?hangar\.papermc\.io\/([^/?#]+)/);
+    const match = link.href.match(/^https?:\/\/(?:www\.)?hangar\.papermc\.io\/([^/?#]+\/[^/?#]+)/);
     if (match) {
       const slug = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://hangar.papermc.io/${slug.toLowerCase()}`,
         badgeUrl: badgeUrlTemplate.replace('{slug}', slug),
         badgeType: 'hangarWatchers',
       };

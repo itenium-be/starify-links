@@ -9,7 +9,7 @@ export class ChromeWebStoreLastUpdatedMatcher implements BadgeMatcher {
       const extensionId = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://chrome.google.com/webstore/detail/${extensionId}`,
         badgeUrl: badgeUrlTemplate.replace('{extensionId}', extensionId),
         badgeType: 'chromeWebStoreLastUpdated',
       };

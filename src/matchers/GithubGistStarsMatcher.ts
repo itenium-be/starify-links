@@ -9,7 +9,7 @@ export class GithubGistStarsMatcher implements BadgeMatcher {
       const gistId = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase().replace(/\/$/, ''),
+        baseUrl: `https://gist.github.com/${gistId}`,
         badgeUrl: badgeUrlTemplate.replace('{gistId}', gistId),
         badgeType: 'githubGistStars',
       };

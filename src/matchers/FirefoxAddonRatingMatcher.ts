@@ -9,7 +9,7 @@ export class FirefoxAddonRatingMatcher implements BadgeMatcher {
       const addonId = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://addons.mozilla.org/firefox/addon/${addonId.toLowerCase()}`,
         badgeUrl: badgeUrlTemplate.replace('{addonId}', addonId),
         badgeType: 'firefoxAddonRating',
       };

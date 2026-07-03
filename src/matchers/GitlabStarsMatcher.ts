@@ -6,10 +6,11 @@ export class GitlabStarsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {
     const match = link.href.match(/^https?:\/\/(?:www\.)?gitlab\.com\/([^/?#]+(?:\/[^/?#]+)*)/);
     if (match) {
-      const projectId = encodeURIComponent(match[1]);
+      const projectPath = match[1].split('/-/')[0];
+      const projectId = encodeURIComponent(projectPath);
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://gitlab.com/${projectPath.toLowerCase()}`,
         badgeUrl: badgeUrlTemplate.replace('{projectId}', projectId),
         badgeType: 'gitlabStars',
       };
