@@ -1,4 +1,5 @@
 import { badgeRenderer } from "./badgeRenderer";
+import { unwrapBingLink } from "./bingRedirect";
 import { getBadgesUserConfig, shieldsConfig } from "./config";
 import { badgesConfig } from "./matchers/badgesConfig";
 import { BadgeConfig, BadgeInfo, BadgeLinkInfo } from "./types";
@@ -12,7 +13,7 @@ export async function findAndConvertLinks(linkContainers?: NodeListOf<Element>, 
     : Array.from(document.getElementsByTagName('a'));
 
   const githubLinks: BadgeLinkInfo[] = links
-    .map(a => ({href: (a.getAttribute('href') || '').trim(), el: a}));
+    .map(a => ({href: unwrapBingLink((a.getAttribute('href') || '').trim()), el: a}));
 
   githubLinks.forEach(a => {
     badgesConfig.forEach(badgeConfig => {
