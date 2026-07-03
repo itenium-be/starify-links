@@ -6,7 +6,9 @@ import { CratesDownloadsMatcher } from "./CratesDownloadsMatcher";
 import { DockerPullsMatcher } from "./DockerPullsMatcher";
 import { NpmDownloadsMatcher } from "./NpmDownloadsMatcher";
 import { NugetDownloadsMatcher } from "./NugetDownloadsMatcher";
+import { PackagistDownloadsMatcher } from "./PackagistDownloadsMatcher";
 import { PypiDownloadsMatcher } from "./PypiDownloadsMatcher";
+import { SourceForgeDownloadsMatcher } from "./SourceForgeDownloadsMatcher";
 import { RubyGemsDownloadsMatcher } from "./RubyGemsDownloadsMatcher";
 import { ChromeWebStoreMatcher } from "./ChromeWebStoreMatcher";
 import { ChromeWebStoreRatingCountMatcher } from "./ChromeWebStoreRatingCountMatcher";
@@ -99,4 +101,6 @@ export const badgesConfig: BadgeMatcher[] = [
   new CratesDownloadsMatcher(),
   new RubyGemsDownloadsMatcher(),
   new DockerPullsMatcher(),
+  new PackagistDownloadsMatcher(),
+  new SourceForgeDownloadsMatcher(),
 ];

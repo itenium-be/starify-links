@@ -353,4 +353,18 @@ test.describe('Package registry links that should get a downloads badge', () => 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
+
+  test('should add downloads badge to a Packagist package', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/packagist.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add downloads badge to a SourceForge project', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/sourceforge.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
 });

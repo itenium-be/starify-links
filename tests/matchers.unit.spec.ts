@@ -10,6 +10,8 @@ import { NostrBandFollowersMatcher } from '../src/matchers/NostrBandFollowersMat
 import { ThunderstoreLikesMatcher } from '../src/matchers/ThunderstoreLikesMatcher';
 import { YoutubeChannelSubscribersMatcher } from '../src/matchers/YoutubeChannelSubscribersMatcher';
 import { GithubGistStarsMatcher } from '../src/matchers/GithubGistStarsMatcher';
+import { PackagistDownloadsMatcher } from '../src/matchers/PackagistDownloadsMatcher';
+import { SourceForgeDownloadsMatcher } from '../src/matchers/SourceForgeDownloadsMatcher';
 
 const baseUrlOf = (m: BadgeMatcher, href: string) => m.match({ href, el: undefined as any })?.baseUrl;
 
@@ -56,6 +58,15 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
     { name: 'YouTube channel', matcher: new YoutubeChannelSubscribersMatcher(), variants: [
       'https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ',
       'https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ/videos',
+    ]},
+    { name: 'Packagist', matcher: new PackagistDownloadsMatcher(), variants: [
+      'https://packagist.org/packages/guzzlehttp/guzzle',
+      'https://packagist.org/packages/guzzlehttp/guzzle#community',
+      'https://packagist.org/packages/guzzlehttp/guzzle?query=1',
+    ]},
+    { name: 'SourceForge', matcher: new SourceForgeDownloadsMatcher(), variants: [
+      'https://sourceforge.net/projects/sevenzip/',
+      'https://sourceforge.net/projects/sevenzip/files/',
     ]},
     { name: 'GitHub Gist', matcher: new GithubGistStarsMatcher(), variants: [
       'https://gist.github.com/Laoujin/12f5d2f76d51ee6c0a49',

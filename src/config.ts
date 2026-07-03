@@ -347,5 +347,17 @@ export const badgesUserConfig: BadgesUserConfig = {
     style: 'social' as const,
     label: 'Pulls',
     logo: 'docker',
+  },
+  packagistDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'packagist',
+  },
+  sourceForgeDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'sourceforge',
   }
 }

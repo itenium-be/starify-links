@@ -198,4 +198,8 @@ export type BadgesUserConfig = {
   rubyGemsDownloads: BadgeConfig;
   /** See: https://shields.io/badges/docker-pulls */
   dockerPulls: BadgeConfig;
+  /** See: https://shields.io/badges/packagist-downloads */
+  packagistDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/sourceforge-downloads */
+  sourceForgeDownloads: BadgeConfig;
 }

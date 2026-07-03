@@ -97,6 +97,8 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'cratesDownloads', label: 'crates.io Downloads', docsUrl: 'https://shields.io/badges/crates-io-total-downloads' },
       { key: 'rubyGemsDownloads', label: 'RubyGems Downloads', docsUrl: 'https://shields.io/badges/gem-total-downloads' },
       { key: 'dockerPulls', label: 'Docker Pulls', docsUrl: 'https://shields.io/badges/docker-pulls' },
+      { key: 'packagistDownloads', label: 'Packagist Downloads', docsUrl: 'https://shields.io/badges/packagist-downloads' },
+      { key: 'sourceForgeDownloads', label: 'SourceForge Downloads', docsUrl: 'https://shields.io/badges/sourceforge-downloads' },
     ]
   },
   {

@@ -88,6 +88,8 @@ chrome://extensions/
   - [pkg.go](https://pkg.go.dev/github.com/gin-gonic/gin)
   - [Docker Hub (official)](https://hub.docker.com/_/nginx)
   - [Docker Hub (user)](https://hub.docker.com/r/grafana/grafana)
+  - [Packagist](https://packagist.org/packages/guzzlehttp/guzzle)
+  - [SourceForge](https://sourceforge.net/projects/sevenzip/)
 - Other badges:
   - [Github Gist](https://gist.github.com/Laoujin/12f5d2f76d51ee6c0a49)
   - [Subreddit](https://www.reddit.com/r/ProgrammerHumor/?tl=en)
