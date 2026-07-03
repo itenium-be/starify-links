@@ -32,6 +32,12 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     await context.close();
   });
 
+  test.afterEach(async () => {
+    for (const page of context.pages().slice(1)) {
+      await page.close();
+    }
+  });
+
   test('on GitHub', async () => {
     const url = 'https://github.com/itenium-be/starify-links';
     const page = await goToWhitelistedPage(context, url);
