@@ -296,3 +296,47 @@ test.describe('Non github repository links that should get a badge', () => {
     expect(badges).toBe(1);
   });
 });
+
+test.describe('Package registry links that should get a downloads badge', () => {
+  test('should add downloads badge to an npm package', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/npm.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add downloads badge to a PyPI package', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/pypi.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add downloads badge to a NuGet package', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/nuget.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add downloads badge to a crates.io crate', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/crates.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add downloads badge to a RubyGems gem', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/rubygems.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add pulls badge to Docker Hub images (official and user)', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/docker.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(2);
+  });
+});

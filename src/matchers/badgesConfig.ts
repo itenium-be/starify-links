@@ -2,6 +2,12 @@ import { BadgeMatcher } from "../types";
 import { BlueskyFollowersMatcher } from "./BlueskyFollowersMatcher";
 import { BlueskyPostsMatcher } from "./BlueskyPostsMatcher";
 import { ChromeWebStoreLastUpdatedMatcher } from "./ChromeWebStoreLastUpdatedMatcher";
+import { CratesDownloadsMatcher } from "./CratesDownloadsMatcher";
+import { DockerPullsMatcher } from "./DockerPullsMatcher";
+import { NpmDownloadsMatcher } from "./NpmDownloadsMatcher";
+import { NugetDownloadsMatcher } from "./NugetDownloadsMatcher";
+import { PypiDownloadsMatcher } from "./PypiDownloadsMatcher";
+import { RubyGemsDownloadsMatcher } from "./RubyGemsDownloadsMatcher";
 import { ChromeWebStoreMatcher } from "./ChromeWebStoreMatcher";
 import { ChromeWebStoreRatingCountMatcher } from "./ChromeWebStoreRatingCountMatcher";
 import { ChromeWebStoreRatingMatcher } from "./ChromeWebStoreRatingMatcher";
@@ -87,4 +93,10 @@ export const badgesConfig: BadgeMatcher[] = [
   new FirefoxAddonRatingMatcher(),
   new FirefoxAddonStarsMatcher(),
   new FirefoxAddonDownloadsMatcher(),
+  new NpmDownloadsMatcher(),
+  new PypiDownloadsMatcher(),
+  new NugetDownloadsMatcher(),
+  new CratesDownloadsMatcher(),
+  new RubyGemsDownloadsMatcher(),
+  new DockerPullsMatcher(),
 ];

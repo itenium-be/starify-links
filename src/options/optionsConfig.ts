@@ -85,6 +85,17 @@ export const badgeCategories: BadgeCategory[] = [
     ]
   },
   {
+    name: 'Package Registries',
+    badges: [
+      { key: 'npmDownloads', label: 'npm Downloads', docsUrl: 'https://shields.io/badges/npm-downloads' },
+      { key: 'pypiDownloads', label: 'PyPI Downloads', docsUrl: 'https://shields.io/badges/py-pi-downloads' },
+      { key: 'nugetDownloads', label: 'NuGet Downloads', docsUrl: 'https://shields.io/badges/nu-get-downloads' },
+      { key: 'cratesDownloads', label: 'crates.io Downloads', docsUrl: 'https://shields.io/badges/crates-io-total-downloads' },
+      { key: 'rubyGemsDownloads', label: 'RubyGems Downloads', docsUrl: 'https://shields.io/badges/gem-total-downloads' },
+      { key: 'dockerPulls', label: 'Docker Pulls', docsUrl: 'https://shields.io/badges/docker-pulls' },
+    ]
+  },
+  {
     name: 'Other Platforms',
     badges: [
       { key: 'nostrBandFollowers', label: 'Nostr Band Followers', docsUrl: 'https://shields.io/badges/nostr-band-followers' },

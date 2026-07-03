@@ -307,5 +307,44 @@ export const badgesUserConfig: BadgesUserConfig = {
     style: 'social' as const,
     label: 'Downloads',
     logo: 'firefox',
+  },
+
+
+  // Package Registries
+  npmDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'npm',
+  },
+  pypiDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'pypi',
+  },
+  nugetDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'nuget',
+  },
+  cratesDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'rust',
+  },
+  rubyGemsDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'rubygems',
+  },
+  dockerPulls: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Pulls',
+    logo: 'docker',
   }
 }

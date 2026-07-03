@@ -186,4 +186,16 @@ export type BadgesUserConfig = {
   firefoxAddonStars: BadgeConfig;
   /** See: https://shields.io/badges/mozilla-add-on-downloads */
   firefoxAddonDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/npm-downloads */
+  npmDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/py-pi-downloads */
+  pypiDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/nu-get-downloads */
+  nugetDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/crates-io-total-downloads */
+  cratesDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/gem-total-downloads */
+  rubyGemsDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/docker-pulls */
+  dockerPulls: BadgeConfig;
 }
