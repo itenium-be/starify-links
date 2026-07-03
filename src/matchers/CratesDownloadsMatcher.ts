@@ -1,6 +1,6 @@
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/crates/d/{crate}';
+const badgeUrlTemplate = 'https://img.shields.io/crates/d/{crate}.svg';
 
 export class CratesDownloadsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {

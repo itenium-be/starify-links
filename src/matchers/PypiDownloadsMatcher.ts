@@ -1,6 +1,6 @@
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/pypi/dm/{package}';
+const badgeUrlTemplate = 'https://img.shields.io/pypi/dm/{package}.svg';
 
 export class PypiDownloadsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {

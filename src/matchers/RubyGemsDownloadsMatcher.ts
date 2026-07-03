@@ -1,6 +1,6 @@
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/gem/dt/{gem}';
+const badgeUrlTemplate = 'https://img.shields.io/gem/dt/{gem}.svg';
 
 export class RubyGemsDownloadsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {

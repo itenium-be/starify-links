@@ -1,6 +1,6 @@
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/npm/dw/{package}';
+const badgeUrlTemplate = 'https://img.shields.io/npm/dw/{package}.svg';
 
 export class NpmDownloadsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {

@@ -1,6 +1,6 @@
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/docker/pulls/{repo}';
+const badgeUrlTemplate = 'https://img.shields.io/docker/pulls/{repo}.svg';
 
 export class DockerPullsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {
