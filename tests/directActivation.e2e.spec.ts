@@ -136,11 +136,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
 
     const searchInput = page.getByRole('combobox');
     await searchInput.fill('@itenium/date-holidays-be');
-    await page.waitForTimeout(2000);
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
-
-    await page.waitForTimeout(3000);
+    await page.getByRole('option').filter({ hasText: '@itenium/date-holidays-be' }).first().click();
 
     const repoLink = page.locator('#repository-link');
     await expect(repoLink).toHaveText('github.com/itenium-be/date-holidays-be');
