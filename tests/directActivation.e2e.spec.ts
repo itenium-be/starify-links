@@ -2,6 +2,9 @@ import { test, expect, chromium, BrowserContext } from '@playwright/test';
 import * as path from 'path';
 import { goToWhitelistedPage, getBadgeLocator } from './test-utils';
 
+/** Increase timeout for badge checks to wait for the first retry after a 429 Too Many Requests **/
+const BADGE_TIMEOUT = 35_000;
+
 // Test the actual sites for which directActivation.ts is configured
 
 test.describe('directActivation Sites - Should automatically add badges', () => {
@@ -44,10 +47,10 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
 
     page.on('console', msg => console.log(`[browser] ${msg.text()}`));
 
-    await expect(page.locator('img[src*="shields.io/github/stars"]').first()).toBeVisible({timeout: 30_000});
+    await expect(page.locator('img[src*="shields.io/github/stars"]').first()).toBeVisible({ timeout: BADGE_TIMEOUT });
 
     const mikeImg = getBadgeLocator(page, 'itenium-be/Mi-Ke');
-    await expect(mikeImg).toHaveCount(1);
+    await expect(mikeImg).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on GitHub navigating from issues to issues/detail with SPA', async () => {
@@ -59,7 +62,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     await page.waitForTimeout(3000);
 
     const badge = getBadgeLocator(page, 'microsoft/calculator');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on StackOverflow', async () => {
@@ -67,7 +70,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'facebook/create-react-app');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test.skip('on Google', async () => {
@@ -75,7 +78,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'facebook/react');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test.skip('on Google.fr', async () => {
@@ -83,7 +86,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'facebook/react');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on nuget it adds two badges', async () => {
@@ -93,7 +96,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'JamesNK/Newtonsoft.Json');
-    await expect(badge).toHaveCount(2);
+    await expect(badge).toHaveCount(2, { timeout: BADGE_TIMEOUT });
   });
 
   test('on marketplace.visualstudio.com', async () => {
@@ -101,7 +104,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'aaron-bond/better-comments');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on marketplace.visualstudio.com, which has an observer, it also adds badges to other links', async () => {
@@ -110,7 +113,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
 
     // Note that the github pages now forwards to: avocadowastaken/prettier-plugin-prisma
     const badge = getBadgeLocator(page, 'umidbekk/prettier-plugin-prisma');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on npmjs.com', async () => {
@@ -118,7 +121,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'facebook/react');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on npmjs.com, with many links to the same github repo', async () => {
@@ -127,7 +130,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'commenthol/date-holidays');
-    await expect(badge).toHaveCount(3);
+    await expect(badge).toHaveCount(3, { timeout: BADGE_TIMEOUT });
 
     const repoLink = page.locator('#repository-link');
     await expect(repoLink).toHaveText('github.com/commenthol/date-holidays');
@@ -138,7 +141,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'facebook/react');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
 
     const searchInput = page.getByRole('combobox');
     await searchInput.fill('@itenium/date-holidays-be');
@@ -148,7 +151,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     await expect(repoLink).toHaveText('github.com/itenium-be/date-holidays-be');
 
     const newBadge = getBadgeLocator(page, 'itenium-be/date-holidays-be');
-    await expect(newBadge).toHaveCount(2);
+    await expect(newBadge).toHaveCount(2, { timeout: BADGE_TIMEOUT });
   });
 
   test('on npmjs.com, switch to a different package, removes badges if not a github link', async () => {
@@ -156,7 +159,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'facebook/react');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
 
     const searchInput = page.getByRole('combobox');
     await searchInput.fill('@itenium/date-holidays-be');
@@ -166,10 +169,10 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     await expect(repoLink).toHaveText('github.com/itenium-be/date-holidays-be');
 
     const newBadge = getBadgeLocator(page, 'itenium-be/date-holidays-be');
-    await expect(newBadge).toHaveCount(2);
+    await expect(newBadge).toHaveCount(2, { timeout: BADGE_TIMEOUT });
 
     const oldBadge = getBadgeLocator(page, 'facebook/react');
-    await expect(oldBadge).toHaveCount(0);
+    await expect(oldBadge).toHaveCount(0, { timeout: BADGE_TIMEOUT });
   });
 
   test('on pypi.org', async () => {
@@ -177,7 +180,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'psf/requests');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on rubygems.org', async () => {
@@ -185,7 +188,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'rails/rails');
-    await expect(badge).toHaveCount(4);
+    await expect(badge).toHaveCount(4, { timeout: BADGE_TIMEOUT });
   });
 
   test.skip('on packagist.org', async () => {
@@ -194,23 +197,21 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'guzzle/guzzle');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 
   test('on crates.io', async () => {
     const url = 'https://crates.io/crates/serde/1.0.228';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'serde-rs/serde').count();
-    expect(badge).toBeGreaterThan(0);
+    await expect(getBadgeLocator(page, 'serde-rs/serde')).not.toHaveCount(0, { timeout: BADGE_TIMEOUT });
   });
 
   test('on pkg.go.dev', async () => {
     const url = 'https://pkg.go.dev/github.com/gin-gonic/gin';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'gin-gonic/gin').count();
-    expect(badge).toBeGreaterThan(0);
+    await expect(getBadgeLocator(page, 'gin-gonic/gin')).not.toHaveCount(0, { timeout: BADGE_TIMEOUT });
   });
 
   test.skip('on swiftpackageindex.com', async () => {
@@ -218,8 +219,7 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const url = 'https://swiftpackageindex.com/Alamofire/Alamofire';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = await getBadgeLocator(page, 'Alamofire/Alamofire').count();
-    expect(badge).toBeGreaterThan(0);
+    await expect(getBadgeLocator(page, 'Alamofire/Alamofire')).not.toHaveCount(0, { timeout: BADGE_TIMEOUT });
   });
 
   test('on DuckDuckGo', async () => {
@@ -227,6 +227,6 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const page = await goToWhitelistedPage(context, url);
 
     const badge = getBadgeLocator(page, 'tensorflow/tensorflow');
-    await expect(badge).toHaveCount(1);
+    await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
 });
