@@ -47,6 +47,7 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'twitterUrl', label: 'Twitter/X URL', docsUrl: 'https://shields.io/badges/x-formerly-twitter-url' },
       { key: 'twitterFollow', label: 'Twitter/X Follow', docsUrl: 'https://shields.io/badges/x-formerly-twitter-follow' },
       { key: 'lemmy', label: 'Lemmy Community', docsUrl: 'https://shields.io/badges/lemmy' },
+      { key: 'stackExchangeReputation', label: 'StackExchange Reputation', docsUrl: 'https://shields.io/badges/stack-exchange-reputation' },
     ]
   },
   {
@@ -77,6 +78,8 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'wordPressThemeDownloads', label: 'WordPress Theme Downloads', docsUrl: 'https://shields.io/badges/word-press-theme-downloads' },
       { key: 'wordPressThemeRating', label: 'WordPress Theme Rating', docsUrl: 'https://shields.io/badges/word-press-theme-rating' },
       { key: 'wordPressThemeStars', label: 'WordPress Theme Stars', docsUrl: 'https://shields.io/badges/word-press-theme-stars' },
+      { key: 'openVsxDownloads', label: 'Open VSX Downloads', docsUrl: 'https://shields.io/badges/open-vsx-downloads' },
+      { key: 'jetbrainsPluginDownloads', label: 'JetBrains Plugin Downloads', docsUrl: 'https://shields.io/badges/jet-brains-plugin-downloads' },
     ]
   },
   {
@@ -86,6 +89,7 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'hangarWatchers', label: 'Hangar Watchers', docsUrl: 'https://shields.io/badges/hangar-watchers' },
       { key: 'hangarStars', label: 'Hangar Stars', docsUrl: 'https://shields.io/badges/hangar-stars' },
       { key: 'thunderstoreLikes', label: 'Thunderstore Likes', docsUrl: 'https://shields.io/badges/thunderstore-likes' },
+      { key: 'steamWorkshopDownloads', label: 'Steam Workshop Downloads', docsUrl: 'https://shields.io/badges/steam-downloads' },
     ]
   },
   {
@@ -99,12 +103,20 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'dockerPulls', label: 'Docker Pulls', docsUrl: 'https://shields.io/badges/docker-pulls' },
       { key: 'packagistDownloads', label: 'Packagist Downloads', docsUrl: 'https://shields.io/badges/packagist-downloads' },
       { key: 'sourceForgeDownloads', label: 'SourceForge Downloads', docsUrl: 'https://shields.io/badges/sourceforge-downloads' },
+      { key: 'powershellGalleryDownloads', label: 'PowerShell Gallery Downloads', docsUrl: 'https://shields.io/badges/power-shell-gallery-downloads' },
+      { key: 'chocolateyDownloads', label: 'Chocolatey Downloads', docsUrl: 'https://shields.io/badges/chocolatey-downloads' },
+      { key: 'homebrewDownloads', label: 'Homebrew Downloads', docsUrl: 'https://shields.io/badges/homebrew-downloads' },
+      { key: 'condaDownloads', label: 'Conda Downloads', docsUrl: 'https://shields.io/badges/conda-downloads' },
+      { key: 'hexpmDownloads', label: 'Hex.pm Downloads', docsUrl: 'https://shields.io/badges/hex-downloads' },
+      { key: 'pubDownloads', label: 'Pub Downloads', docsUrl: 'https://shields.io/badges/pub-monthly-downloads' },
+      { key: 'flathubDownloads', label: 'Flathub Installs', docsUrl: 'https://shields.io/badges/flathub-downloads' },
     ]
   },
   {
     name: 'Other Platforms',
     badges: [
       { key: 'nostrBandFollowers', label: 'Nostr Band Followers', docsUrl: 'https://shields.io/badges/nostr-band-followers' },
+      { key: 'openCollectiveBackers', label: 'OpenCollective Backers', docsUrl: 'https://shields.io/badges/open-collective-backers' },
     ]
   },
 ];

@@ -11,6 +11,18 @@ import { PkgGoDevMatcher } from "./PkgGoDevMatcher";
 import { PypiDownloadsMatcher } from "./PypiDownloadsMatcher";
 import { SourceForgeDownloadsMatcher } from "./SourceForgeDownloadsMatcher";
 import { RubyGemsDownloadsMatcher } from "./RubyGemsDownloadsMatcher";
+import { PowerShellGalleryDownloadsMatcher } from "./PowerShellGalleryDownloadsMatcher";
+import { ChocolateyDownloadsMatcher } from "./ChocolateyDownloadsMatcher";
+import { OpenVsxDownloadsMatcher } from "./OpenVsxDownloadsMatcher";
+import { HomebrewDownloadsMatcher } from "./HomebrewDownloadsMatcher";
+import { CondaDownloadsMatcher } from "./CondaDownloadsMatcher";
+import { HexpmDownloadsMatcher } from "./HexpmDownloadsMatcher";
+import { PubDownloadsMatcher } from "./PubDownloadsMatcher";
+import { JetBrainsPluginDownloadsMatcher } from "./JetBrainsPluginDownloadsMatcher";
+import { FlathubDownloadsMatcher } from "./FlathubDownloadsMatcher";
+import { StackExchangeReputationMatcher } from "./StackExchangeReputationMatcher";
+import { SteamWorkshopDownloadsMatcher } from "./SteamWorkshopDownloadsMatcher";
+import { OpenCollectiveBackersMatcher } from "./OpenCollectiveBackersMatcher";
 import { ChromeWebStoreMatcher } from "./ChromeWebStoreMatcher";
 import { ChromeWebStoreRatingCountMatcher } from "./ChromeWebStoreRatingCountMatcher";
 import { ChromeWebStoreRatingMatcher } from "./ChromeWebStoreRatingMatcher";
@@ -105,4 +117,16 @@ export const badgesConfig: BadgeMatcher[] = [
   new DockerPullsMatcher(),
   new PackagistDownloadsMatcher(),
   new SourceForgeDownloadsMatcher(),
+  new PowerShellGalleryDownloadsMatcher(),
+  new ChocolateyDownloadsMatcher(),
+  new OpenVsxDownloadsMatcher(),
+  new HomebrewDownloadsMatcher(),
+  new CondaDownloadsMatcher(),
+  new HexpmDownloadsMatcher(),
+  new PubDownloadsMatcher(),
+  new JetBrainsPluginDownloadsMatcher(),
+  new FlathubDownloadsMatcher(),
+  new StackExchangeReputationMatcher(),
+  new SteamWorkshopDownloadsMatcher(),
+  new OpenCollectiveBackersMatcher(),
 ];

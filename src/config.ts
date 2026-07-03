@@ -359,5 +359,76 @@ export const badgesUserConfig: BadgesUserConfig = {
     style: 'social' as const,
     label: 'Downloads',
     logo: 'sourceforge',
+  },
+  powershellGalleryDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'powershell',
+  },
+  chocolateyDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'chocolatey',
+  },
+  openVsxDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+  },
+  homebrewDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'homebrew',
+  },
+  condaDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'anaconda',
+  },
+  hexpmDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'elixir',
+  },
+  pubDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'dart',
+  },
+  jetbrainsPluginDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'jetbrains',
+  },
+  flathubDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Installs',
+    logo: 'flathub',
+  },
+  stackExchangeReputation: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Reputation',
+    logo: 'stackexchange',
+  },
+  steamWorkshopDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'steam',
+  },
+  openCollectiveBackers: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Backers',
+    logo: 'opencollective',
   }
 }

@@ -14,6 +14,18 @@ import { PackagistDownloadsMatcher } from '../src/matchers/PackagistDownloadsMat
 import { SourceForgeDownloadsMatcher } from '../src/matchers/SourceForgeDownloadsMatcher';
 import { PkgGoDevMatcher } from '../src/matchers/PkgGoDevMatcher';
 import { GithubRepositoryMatcher } from '../src/matchers/GithubRepositoryMatcher';
+import { PowerShellGalleryDownloadsMatcher } from '../src/matchers/PowerShellGalleryDownloadsMatcher';
+import { ChocolateyDownloadsMatcher } from '../src/matchers/ChocolateyDownloadsMatcher';
+import { OpenVsxDownloadsMatcher } from '../src/matchers/OpenVsxDownloadsMatcher';
+import { HomebrewDownloadsMatcher } from '../src/matchers/HomebrewDownloadsMatcher';
+import { CondaDownloadsMatcher } from '../src/matchers/CondaDownloadsMatcher';
+import { HexpmDownloadsMatcher } from '../src/matchers/HexpmDownloadsMatcher';
+import { PubDownloadsMatcher } from '../src/matchers/PubDownloadsMatcher';
+import { JetBrainsPluginDownloadsMatcher } from '../src/matchers/JetBrainsPluginDownloadsMatcher';
+import { FlathubDownloadsMatcher } from '../src/matchers/FlathubDownloadsMatcher';
+import { StackExchangeReputationMatcher } from '../src/matchers/StackExchangeReputationMatcher';
+import { SteamWorkshopDownloadsMatcher } from '../src/matchers/SteamWorkshopDownloadsMatcher';
+import { OpenCollectiveBackersMatcher } from '../src/matchers/OpenCollectiveBackersMatcher';
 
 const baseUrlOf = (m: BadgeMatcher, href: string) => m.match({ href, el: undefined as any })?.baseUrl;
 
@@ -70,6 +82,54 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
       'https://sourceforge.net/projects/sevenzip/',
       'https://sourceforge.net/projects/sevenzip/files/',
     ]},
+    { name: 'PowerShell Gallery', matcher: new PowerShellGalleryDownloadsMatcher(), variants: [
+      'https://www.powershellgallery.com/packages/Pester',
+      'https://www.powershellgallery.com/packages/Pester/5.5.0',
+    ]},
+    { name: 'Chocolatey', matcher: new ChocolateyDownloadsMatcher(), variants: [
+      'https://community.chocolatey.org/packages/git',
+      'https://community.chocolatey.org/packages/git/2.43.0',
+    ]},
+    { name: 'Open VSX', matcher: new OpenVsxDownloadsMatcher(), variants: [
+      'https://open-vsx.org/extension/redhat/java',
+      'https://open-vsx.org/extension/redhat/java/reviews',
+    ]},
+    { name: 'Homebrew', matcher: new HomebrewDownloadsMatcher(), variants: [
+      'https://formulae.brew.sh/formula/wget',
+      'https://formulae.brew.sh/formula/wget#default',
+    ]},
+    { name: 'Conda', matcher: new CondaDownloadsMatcher(), variants: [
+      'https://anaconda.org/conda-forge/numpy',
+      'https://anaconda.org/conda-forge/numpy/files',
+    ]},
+    { name: 'Hex.pm', matcher: new HexpmDownloadsMatcher(), variants: [
+      'https://hex.pm/packages/phoenix',
+      'https://hex.pm/packages/phoenix/1.7.0',
+    ]},
+    { name: 'Pub', matcher: new PubDownloadsMatcher(), variants: [
+      'https://pub.dev/packages/provider',
+      'https://pub.dev/packages/provider/versions',
+    ]},
+    { name: 'JetBrains plugin', matcher: new JetBrainsPluginDownloadsMatcher(), variants: [
+      'https://plugins.jetbrains.com/plugin/9568-go',
+      'https://plugins.jetbrains.com/plugin/9568-go/versions',
+    ]},
+    { name: 'Flathub', matcher: new FlathubDownloadsMatcher(), variants: [
+      'https://flathub.org/apps/org.gimp.GIMP',
+      'https://flathub.org/apps/details/org.gimp.GIMP',
+    ]},
+    { name: 'StackExchange', matcher: new StackExchangeReputationMatcher(), variants: [
+      'https://stackoverflow.com/users/22656/jon-skeet',
+      'https://stackoverflow.com/users/22656/jon-skeet?tab=profile',
+    ]},
+    { name: 'Steam Workshop', matcher: new SteamWorkshopDownloadsMatcher(), variants: [
+      'https://steamcommunity.com/sharedfiles/filedetails/?id=450814997',
+      'https://steamcommunity.com/sharedfiles/filedetails/?id=450814997&searchtext=x',
+    ]},
+    { name: 'OpenCollective', matcher: new OpenCollectiveBackersMatcher(), variants: [
+      'https://opencollective.com/webpack',
+      'https://opencollective.com/webpack/updates',
+    ]},
     { name: 'pkg.go.dev', matcher: new PkgGoDevMatcher(), variants: [
       'https://pkg.go.dev/github.com/gin-gonic/gin',
       'https://pkg.go.dev/github.com/gin-gonic/gin/binding',
@@ -106,6 +166,15 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
     expect(result?.badgeUrl).toContain('github/stars/gin-gonic/gin.svg');
     expect(result?.baseUrl).toBe(new GithubRepositoryMatcher()
       .match({ href: 'https://github.com/gin-gonic/gin', el: undefined as any })?.baseUrl);
+  });
+
+  test('StackExchange maps hosts to sites and ignores unknown hosts', () => {
+    const m = new StackExchangeReputationMatcher();
+    expect(m.match({ href: 'https://superuser.com/users/1/x', el: undefined as any })?.badgeUrl)
+      .toContain('/stackexchange/superuser/r/1.svg');
+    expect(m.match({ href: 'https://scifi.stackexchange.com/users/1/x', el: undefined as any })?.badgeUrl)
+      .toContain('/stackexchange/scifi/r/1.svg');
+    expect(m.match({ href: 'https://example.com/users/1/x', el: undefined as any })).toBeNull();
   });
 
   test('Lemmy keeps communities and users distinct', () => {
