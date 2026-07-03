@@ -7,11 +7,6 @@
 
 ## E2E Tests
 
-- `*.e2e.spec.ts` run against LIVE third-party sites on purpose: the product is a
-  browser extension that badges those real pages, so the tests must keep verifying
-  the real DOM. Do NOT mock/stub/HAR them or loosen exact `toHaveCount` assertions
-  to hide site drift.
-- A failure means either the site changed (update the selector/expectation to match
-  reality) or the extension regressed (fix the extension). Investigate which; never
-  quarantine to make CI green.
-- The nightly `schedule` run is intentional: it catches upstream site changes early.
+When working on or debugging the e2e tests (`tests/*.e2e.spec.ts`), read
+[docs/e2e-tests.md](docs/e2e-tests.md) first — it covers why they hit live sites, how to
+run them, and what diagnostics a failure produces and how to fetch them.

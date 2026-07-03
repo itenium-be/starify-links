@@ -1,6 +1,6 @@
 import { test, expect, chromium, BrowserContext } from '@playwright/test';
 import * as path from 'path';
-import { goToWhitelistedPage, getBadgeLocator } from './test-utils';
+import { goToWhitelistedPage, getBadgeLocator, attachDiagnostics } from './test-utils';
 
 /** Increase timeout for badge checks to wait for the first retry after a 429 Too Many Requests **/
 const BADGE_TIMEOUT = 35_000;
@@ -36,6 +36,12 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
   });
 
   test.afterEach(async () => {
+    const testInfo = test.info();
+    if (testInfo.status !== testInfo.expectedStatus) {
+      for (const page of context.pages().slice(1)) {
+        await attachDiagnostics(page, testInfo);
+      }
+    }
     for (const page of context.pages().slice(1)) {
       await page.close();
     }
