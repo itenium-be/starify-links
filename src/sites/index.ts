@@ -3,9 +3,10 @@ import { bing } from "./bing";
 import { duckDuckGo } from "./duckDuckGo";
 import { githubIssues } from "./githubIssues";
 import { google } from "./google";
+import { yahoo } from "./yahoo";
 import { InsertContext, SiteHandler } from "./types";
 
-export const siteHandlers: SiteHandler[] = [google, bing, duckDuckGo, githubIssues];
+export const siteHandlers: SiteHandler[] = [google, bing, yahoo, duckDuckGo, githubIssues];
 
 export function findSiteHandler(currentUrl: string): SiteHandler | undefined {
   return siteHandlers.find(handler => isWhitelisted(handler.url, currentUrl));

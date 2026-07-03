@@ -22,6 +22,10 @@ test.describe('findSiteHandler', () => {
     expect(findSiteHandler('https://github.com/facebook/react/issues/42')?.id).toBe('github-issues');
   });
 
+  test('matches Yahoo search', () => {
+    expect(findSiteHandler('https://search.yahoo.com/search?p=react')?.id).toBe('yahoo');
+  });
+
   test('returns undefined for unhandled sites', () => {
     expect(findSiteHandler('https://example.com/')).toBeUndefined();
   });
@@ -38,5 +42,11 @@ test.describe('unwrapHref', () => {
 
   test('leaves non-redirect hrefs untouched', () => {
     expect(unwrapHref('https://github.com/facebook/react')).toBe('https://github.com/facebook/react');
+  });
+
+  test('decodes a Yahoo RU redirect to the real destination', () => {
+    const real = 'https://github.com/facebook/react';
+    const wrapped = `https://r.search.yahoo.com/_ylt=abc;_ylu=def/RV=2/RE=1784201418/RO=10/RU=${encodeURIComponent(real)}/RK=2/RS=sig-`;
+    expect(unwrapHref(wrapped)).toBe(real);
   });
 });
