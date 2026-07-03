@@ -9,7 +9,7 @@ export class CratesDownloadsMatcher implements BadgeMatcher {
       const crate = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://crates.io/crates/${crate}`.toLowerCase(),
         badgeUrl: badgeUrlTemplate.replace('{crate}', crate),
         badgeType: 'cratesDownloads',
       };

@@ -9,7 +9,7 @@ export class DockerPullsMatcher implements BadgeMatcher {
       const repo = match[3] ? `library/${match[3]}` : `${match[1]}/${match[2]}`;
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://hub.docker.com/${repo}`.toLowerCase(),
         badgeUrl: badgeUrlTemplate.replace('{repo}', repo),
         badgeType: 'dockerPulls',
       };

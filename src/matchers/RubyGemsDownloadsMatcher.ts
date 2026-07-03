@@ -9,7 +9,7 @@ export class RubyGemsDownloadsMatcher implements BadgeMatcher {
       const gem = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://rubygems.org/gems/${gem}`.toLowerCase(),
         badgeUrl: badgeUrlTemplate.replace('{gem}', gem),
         badgeType: 'rubyGemsDownloads',
       };

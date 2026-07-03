@@ -9,7 +9,7 @@ export class NpmDownloadsMatcher implements BadgeMatcher {
       const pkg = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://www.npmjs.com/package/${pkg}`.toLowerCase(),
         badgeUrl: badgeUrlTemplate.replace('{package}', pkg),
         badgeType: 'npmDownloads',
       };

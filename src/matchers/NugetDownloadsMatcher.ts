@@ -9,7 +9,7 @@ export class NugetDownloadsMatcher implements BadgeMatcher {
       const pkg = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://www.nuget.org/packages/${pkg}`.toLowerCase(),
         badgeUrl: badgeUrlTemplate.replace('{package}', pkg),
         badgeType: 'nugetDownloads',
       };

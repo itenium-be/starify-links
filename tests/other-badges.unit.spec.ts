@@ -339,4 +339,18 @@ test.describe('Package registry links that should get a downloads badge', () => 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(2);
   });
+
+  test('should add a single badge when the same npm package is linked multiple ways', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/npm-duplicates.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add a single badge when the same Docker image is linked multiple ways', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/docker-duplicates.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
 });

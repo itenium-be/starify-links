@@ -9,7 +9,7 @@ export class PypiDownloadsMatcher implements BadgeMatcher {
       const pkg = match[1];
 
       return {
-        baseUrl: link.href.toLowerCase(),
+        baseUrl: `https://pypi.org/project/${pkg}`.toLowerCase(),
         badgeUrl: badgeUrlTemplate.replace('{package}', pkg),
         badgeType: 'pypiDownloads',
       };
