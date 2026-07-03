@@ -30,14 +30,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itenium-be/github-stars-links.git"
+    "url": "git+https://github.com/itenium-be/starify-links.git"
   },
   "author": "itenium",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itenium-be/github-stars-links/issues"
+    "url": "https://github.com/itenium-be/starify-links/issues"
   },
-  "homepage": "https://github.com/itenium-be/github-stars-links#readme",
+  "homepage": "https://github.com/itenium-be/starify-links#readme",
   "dependencies": {
     "bootstrap": "^5.3.8"
   }

@@ -46,7 +46,7 @@ export async function badgeRenderer(badge: BadgeInfo) {
         if (extraStuff) {
           extraStuff.style.marginLeft = '80px';
         } else {
-          // TODO: see https://github.com/itenium-be/github-stars-links/issues/26
+          // TODO: see https://github.com/itenium-be/starify-links/issues/26
           // We get here when showing google youtube results in "People also ask" section
           // console.log('UNEXPECTED')
           // console.log(badge.el);

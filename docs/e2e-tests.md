@@ -55,9 +55,9 @@ bunx playwright show-trace test-results/<test-dir>/trace.zip # console + network
 ## Fetching a nightly CI failure
 
 ```
-gh run list -R itenium-be/github-stars-links --workflow playwright-tests.yml -L 10
-gh run view <run-id> -R itenium-be/github-stars-links
-gh run download <run-id> -R itenium-be/github-stars-links -D /tmp/e2e-fail
+gh run list -R itenium-be/**starify-links** --workflow playwright-tests.yml -L 10
+gh run view <run-id> -R itenium-be/**starify-links**
+gh run download <run-id> -R itenium-be/**starify-links** -D /tmp/e2e-fail
 cat /tmp/e2e-fail/playwright-report/data/*.txt                     # failure-diagnostics
 grep -rh "^- Name:" /tmp/e2e-fail/playwright-report/data/*.md      # which tests failed
 bunx playwright show-report /tmp/e2e-fail/playwright-report        # full viewer
