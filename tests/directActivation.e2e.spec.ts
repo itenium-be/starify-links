@@ -150,21 +150,23 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
   });
 
   test('on npmjs.com, switch to a different package, removes badges if not a github link', async () => {
-    const url = 'https://www.npmjs.com/package/@itenium/date-holidays-be';
+    const url = 'https://www.npmjs.com/package/react';
     const page = await goToWhitelistedPage(context, url);
 
+    const badge = getBadgeLocator(page, 'facebook/react');
+    await expect(badge).toHaveCount(1);
+
     const searchInput = page.getByRole('combobox');
-    await searchInput.fill('react');
-    await page.waitForTimeout(5000);
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('Enter');
+    await searchInput.fill('@itenium/date-holidays-be');
+    await page.getByRole('option').filter({ hasText: '@itenium/date-holidays-be' }).first().click();
 
-    await page.waitForTimeout(5000);
+    const repoLink = page.locator('#repository-link');
+    await expect(repoLink).toHaveText('github.com/itenium-be/date-holidays-be');
 
-    const newBadge = getBadgeLocator(page, 'facebook/react');
-    await expect(newBadge).toHaveCount(1);
+    const newBadge = getBadgeLocator(page, 'itenium-be/date-holidays-be');
+    await expect(newBadge).toHaveCount(2);
 
-    const oldBadge = getBadgeLocator(page, 'itenium-be/date-holidays-be');
+    const oldBadge = getBadgeLocator(page, 'facebook/react');
     await expect(oldBadge).toHaveCount(0);
   });
 
