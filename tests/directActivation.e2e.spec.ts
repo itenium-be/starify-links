@@ -221,10 +221,10 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
   });
 
   test('on DuckDuckGo', async () => {
-    const url = 'https://duckduckgo.com/?q=github+react';
+    const url = 'https://duckduckgo.com/?q=tensorflow+github';
     const page = await goToWhitelistedPage(context, url);
 
-    const badge = getBadgeLocator(page, 'facebook/react');
+    const badge = getBadgeLocator(page, 'tensorflow/tensorflow');
     await expect(badge).toHaveCount(1);
   });
 });
