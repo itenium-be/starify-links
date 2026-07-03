@@ -1,5 +1,6 @@
 import { findConfig } from './directActivation';
 import { findAndConvertLinks } from './findAndConvertLinks';
+import { isSameUrlNavigation } from './navigationFilter';
 
 (async () => {
   const activator = await findConfig();
@@ -8,6 +9,10 @@ import { findAndConvertLinks } from './findAndConvertLinks';
 
     if (activator.observeNavigation) {
       (window as any).navigation?.addEventListener('navigate', (event: any) => {
+        if (isSameUrlNavigation(event, location.href)) {
+          return;
+        }
+
         removeAllBadges();
 
         setTimeout(() => {
