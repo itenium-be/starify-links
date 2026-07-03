@@ -1,5 +1,6 @@
-import { getCurrentUrl, googleUrl, shieldsConfig } from "./config";
+import { getCurrentUrl, shieldsConfig } from "./config";
 import { findConfig } from "./directActivation";
+import { defaultInsert, findSiteHandler } from "./sites";
 import { BadgeInfo } from "./types";
 
 export async function badgeRenderer(badge: BadgeInfo) {
@@ -27,64 +28,8 @@ export async function badgeRenderer(badge: BadgeInfo) {
       return;
     }
 
-    if (currentUrl.match(googleUrl)/* || currentUrl.endsWith('google.html')*/) {
-      const img = badge.el.getElementsByTagName('img');
-      if (!img || !img.length) {
-        // Could also be a "sublink" -- which do not have images!
-        badge.el.prepend(badgeImg);
-
-      } else {
-        // Google now displays a GitHub logo
-        // --> We replace the logo with the GitHub badge
-        const githubLogo = img[0]!.parentNode!.parentNode! as Element;
-        githubLogo.replaceWith(badgeImg);
-        img[0].style.cssText = 'margin-right: 8px;';
-
-        // Sometimes Google adds some additional stuff
-        // Make sure it does not overlap
-        const extraStuff = badge.el.parentNode!.parentNode?.childNodes[1]?.childNodes[1] as HTMLElement;
-        if (extraStuff) {
-          extraStuff.style.marginLeft = '80px';
-        } else {
-          // TODO: see https://github.com/itenium-be/starify-links/issues/26
-          // We get here when showing google youtube results in "People also ask" section
-          // console.log('UNEXPECTED')
-          // console.log(badge.el);
-          // console.log(badge.el.parentNode!.parentNode?.childNodes[1]);
-          console.error(`Unexpected layout for ${badge.badgeUrl}`);
-          // console.log('UNEXPECTED')
-        }
-      }
-
-    } else if (currentUrl.startsWith('https://duckduckgo.com')) {
-      const imgContainer = badge.el.parentNode!.parentNode as Element;
-      const img = imgContainer.getElementsByTagName('img');
-      if (img && img.length === 1) {
-        const imgEl = img[0] as HTMLImageElement;
-        if (!imgEl.src.includes('shields.io')) {
-          (img[0].parentNode?.parentNode?.parentElement as Element)?.replaceWith(badgeImg);
-        }
-      }
-    } else if (/https:\/\/github.com\/[^/#]+\/[^/#]+\/issues\/\d+/.test(currentUrl)
-        && badge.badgeType === 'githubUserStars'
-        && typeof (badge.el.firstChild as Element)?.getAttribute === 'function'
-        && (badge.el.firstChild as Element).getAttribute('data-testid') === 'github-avatar') {;
-
-      // Github issue detail page
-      const wrapper = document.createElement('div');
-      badge.el.parentNode!.insertBefore(wrapper, badge.el);
-      wrapper.appendChild(badge.el);
-      wrapper.appendChild(badgeImg);
-      badge.el.style.height = 'unset !important';
-      badge.el.style.textAlign = 'center';
-      badge.el.style.display = 'block';
-      badgeImg.style.cssText = 'margin-top: 10px';
-      badge.el.setAttribute('starified', '1');
-
-    } else {
-      // For all other websites:
-      badge.el.prepend(badgeImg);
-    }
+    const insert = findSiteHandler(currentUrl)?.insert ?? defaultInsert;
+    insert({ badge, badgeImg });
   };
   badgeImg.onerror = (err) => setTimeout(() => {
     // TODO: maybe we need to look at the exact statusCode here before deciding what to do?

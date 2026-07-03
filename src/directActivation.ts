@@ -58,7 +58,7 @@ export async function findConfig() {
   return config.find(activator => activator.enabled && isWhitelisted(activator.url, currentUrl));
 }
 
-function isWhitelisted(url: string | RegExp, currentUrl: string) {
+export function isWhitelisted(url: string | RegExp, currentUrl: string) {
   if (typeof url === 'string') {
     return currentUrl.startsWith(url);
   }

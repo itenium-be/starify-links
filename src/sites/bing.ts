@@ -1,3 +1,6 @@
+import { bingUrl } from "../config";
+import { SiteHandler } from "./types";
+
 const bingRedirect = /^https?:\/\/(?:www\.)?bing\.com\/ck\/a\?/i;
 
 export function unwrapBingLink(href: string): string {
@@ -18,3 +21,9 @@ export function unwrapBingLink(href: string): string {
     return href;
   }
 }
+
+export const bing: SiteHandler = {
+  id: 'bing',
+  url: bingUrl,
+  unwrap: unwrapBingLink,
+};
