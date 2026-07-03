@@ -27,6 +27,25 @@ export async function goToWhitelistedPage(context: BrowserContext, url: string) 
   return page;
 }
 
+export async function waitForContentPastCloudflare(page: Page, contentSelector: string, timeout = 90_000): Promise<void> {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    const remaining = timeout - (Date.now() - start);
+    try {
+      await page.waitForSelector(contentSelector, { state: 'attached', timeout: Math.min(15_000, remaining) });
+      return;
+    } catch {
+      const challenged = await page
+        .evaluate(() => /just a moment|checking your browser|security verification/i.test(document.body?.innerText || ''))
+        .catch(() => true);
+      if (challenged) {
+        await page.reload({ waitUntil: 'domcontentloaded' }).catch(() => {});
+      }
+    }
+  }
+  await page.waitForSelector(contentSelector, { state: 'attached', timeout: 5_000 });
+}
+
 export function getBadgeLocator(page: Page, repo: string) {
   return page.locator(`img[src*="https://img.shields.io/github/stars/${repo}.svg"]`);
 }

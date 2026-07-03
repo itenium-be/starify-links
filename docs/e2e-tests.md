@@ -69,11 +69,33 @@ The uploaded artifact only exists for failed runs (`if: failure()` in the workfl
 
 | Signature                                    | Cause                          | Fix                                              |
 |----------------------------------------------|--------------------------------|--------------------------------------------------|
-| `Received: 0`, `cloudflareChallenge=true`    | Cloudflare bot wall            | Site-level; stealth flags or accept it's blocked |
+| `Received: 0`, `cloudflareChallenge=true`    | Cloudflare bot wall            | Tolerated, not bypassed — see StackOverflow below |
 | `Received: 0`, `shields.io 429 responses > 0`| shields.io rate limit          | `BADGE_TIMEOUT` already waits out one retry       |
 | Badge rendered for the wrong repo            | Ambiguous search query         | Use a query whose top GitHub hit is unambiguous  |
 | Expected `githubAnchors` entry absent        | Site changed its DOM/results   | Update the expectation or selector               |
 | `page.goto: ... has been closed`             | Browser/renderer crash         | Heavy page or a tab leak (see config below)      |
+
+## StackOverflow and Cloudflare
+
+StackOverflow sits behind Cloudflare, which intermittently serves the automated Chromium
+a `Just a moment...` interstitial instead of the question. It has two shapes:
+
+- **Hard wall** — the interstitial never clears; no client-side trick reliably beats it.
+- **Soft throttle** — the real page loads but sub-resources `403`, so the answers (and the
+  `github.com` link the badge needs) render late.
+
+The test does not try to *bypass* Cloudflare — that is an unwinnable arms race. Instead it
+*tolerates* it: `waitForContentPastCloudflare` waits for the expected `github.com` anchor,
+reloading on a persisting challenge so Cloudflare's non-interactive challenge can auto-pass,
+and the test raises its own timeout to `120s` so the wait has room. This clears the soft
+throttle and most challenges. The residual hard wall is absorbed by the CI `retries: 2`
+(a per-attempt pass rate around two-thirds compounds to ~96% over three attempts). An
+occasional red nightly here is the harness being blocked, not a product or site regression.
+
+Stealth launch flags (`--disable-blink-features=AutomationControlled`,
+`ignoreDefaultArgs: ['--enable-automation']`) are set but measured no improvement against the
+hard wall on their own. `playwright-extra` + `puppeteer-extra-plugin-stealth` is the next
+lever if the wall worsens; it adds a dependency, so weigh it before reaching for it.
 
 ## Config
 

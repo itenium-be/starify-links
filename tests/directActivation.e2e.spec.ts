@@ -1,6 +1,6 @@
 import { test, expect, chromium, BrowserContext } from '@playwright/test';
 import * as path from 'path';
-import { goToWhitelistedPage, getBadgeLocator, attachDiagnostics } from './test-utils';
+import { goToWhitelistedPage, getBadgeLocator, attachDiagnostics, waitForContentPastCloudflare } from './test-utils';
 
 /** Increase timeout for badge checks to wait for the first retry after a 429 Too Many Requests **/
 const BADGE_TIMEOUT = 35_000;
@@ -18,16 +18,9 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
       args: [
         `--disable-extensions-except=${extensionPath}`,
         `--load-extension=${extensionPath}`,
-        // '--disable-blink-features=AutomationControlled',
-        // '--no-sandbox',
-        // '--disable-infobars',
-        // '--start-maximized',
-        // '--window-size=1280,720',
+        '--disable-blink-features=AutomationControlled',
       ],
-      // ignoreDefaultArgs: ['--enable-automation'],
-      // userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-      // To set userAgent: https://www.npmjs.com/package/user-agents
-      // Could use playwright-extra and puppeteer-extra-plugin-stealth: https://stackoverflow.com/a/79382046/25184132
+      ignoreDefaultArgs: ['--enable-automation'],
     });
   });
 
@@ -72,8 +65,11 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
   });
 
   test('on StackOverflow', async () => {
+    test.setTimeout(120_000);
     const url = 'https://stackoverflow.com/questions/50605219/difference-between-npx-and-npm';
     const page = await goToWhitelistedPage(context, url);
+
+    await waitForContentPastCloudflare(page, 'a[href*="github.com/facebook/create-react-app"]');
 
     const badge = getBadgeLocator(page, 'facebook/create-react-app');
     await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
