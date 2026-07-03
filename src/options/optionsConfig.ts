@@ -7,10 +7,14 @@ type BadgeInfo = {
   docsUrl: string;
 };
 
-type BadgeCategory = {
+export type BadgeCategory = {
   name: string;
   badges: BadgeInfo[];
 };
+
+export function countEnabled(category: BadgeCategory, isEnabled: (key: keyof BadgesUserConfig) => boolean): number {
+  return category.badges.filter(badge => isEnabled(badge.key)).length;
+}
 
 export const badgeCategories: BadgeCategory[] = [
   {

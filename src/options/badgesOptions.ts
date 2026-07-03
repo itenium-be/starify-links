@@ -1,6 +1,6 @@
 import { badgesUserConfig } from "../config";
 import { BadgeConfig, BadgesUserConfig } from "../types";
-import { badgeCategories } from "./optionsConfig";
+import { badgeCategories, countEnabled } from "./optionsConfig";
 
 export function setupBadgesOptions() {
   generateBadgesUI();
@@ -45,6 +45,7 @@ function generateBadgesUI() {
           <button class="accordion-button ${isFirst ? '' : 'collapsed'}" type="button"
                   data-bs-toggle="collapse" data-bs-target="#${categoryId}">
             ${category.name}
+            <span class="badge bg-secondary ms-2" id="${categoryId}-count"></span>
           </button>
         </h2>
         <div id="${categoryId}" class="accordion-collapse collapse ${isFirst ? 'show' : ''}"
@@ -152,6 +153,7 @@ function loadBadgesConfig() {
 
           enabledInput.addEventListener('change', () => {
             toggleBadgeDetails(badgeKey, enabledInput.checked);
+            updateCategoryCounts();
           });
 
           toggleBadgeDetails(badgeKey, badgeConfig.enabled);
@@ -170,6 +172,22 @@ function loadBadgesConfig() {
         });
       }
     });
+
+    updateCategoryCounts();
+  });
+}
+
+function updateCategoryCounts() {
+  badgeCategories.forEach((category, catIndex) => {
+    const countEl = document.getElementById(`category-${catIndex}-count`);
+    if (!countEl) return;
+
+    const active = countEnabled(category, key => {
+      const input = document.getElementById(`${key}-enabled`) as HTMLInputElement | null;
+      return !!input?.checked;
+    });
+
+    countEl.textContent = `${active} / ${category.badges.length}`;
   });
 }
 
