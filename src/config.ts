@@ -1,6 +1,7 @@
 import { BadgesUserConfig } from "./types";
 
 export const googleUrl = /^https:\/\/(www.)?google\..*\/search/;
+export const bingUrl = /^https:\/\/(www.)?bing\.com\/search/;
 
 let cachedBadgesUserConfig: BadgesUserConfig | null = null;
 

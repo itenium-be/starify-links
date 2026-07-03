@@ -1,4 +1,4 @@
-import { getCurrentUrl, googleUrl } from "./config";
+import { bingUrl, getCurrentUrl, googleUrl } from "./config";
 import { DirectActivation } from "./types";
 
 export const activateDirectlyOn: DirectActivation[] = [
@@ -8,6 +8,7 @@ export const activateDirectlyOn: DirectActivation[] = [
   {label: 'Server Fault', enabled: true, url: 'https://serverfault.com'},
   {label: 'Stack Exchange Sites', enabled: true, url: /^https:\/\/.*\.stackexchange\.com/},
   {label: 'Google Search', enabled: true, url: googleUrl},
+  {label: 'Bing Search', enabled: true, url: bingUrl},
   {label: 'GitHub Issues', enabled: true, url: /https:\/\/github.com\/[^/#]+\/[^/#]+\/issues\/\d+/, observeNavigation: true, observe: ':has(> [data-testid="github-avatar"])', observeAllowDuplicates: true},
   {label: 'GitHub', enabled: true, url: /https:\/\/github.com/, observeNavigation: true},
   {label: 'npm', enabled: true, url: 'https://www.npmjs.com/package', replaceText: false, observeNavigation: true, extraBadgeSelector: ':has(> #repository, > #homePage)'},

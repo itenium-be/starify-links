@@ -229,4 +229,12 @@ test.describe('directActivation Sites - Should automatically add badges', () => 
     const badge = getBadgeLocator(page, 'tensorflow/tensorflow');
     await expect(badge).toHaveCount(1, { timeout: BADGE_TIMEOUT });
   });
+
+  test.skip('on Bing (bot-detection serves blank results to Playwright, like Google)', async () => {
+    const url = 'https://www.bing.com/search?q=react+github';
+    const page = await goToWhitelistedPage(context, url);
+
+    const badge = page.locator('img[src*="shields.io/github/stars"]');
+    await expect(badge.first()).toBeVisible({ timeout: BADGE_TIMEOUT });
+  });
 });
