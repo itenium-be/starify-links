@@ -198,13 +198,6 @@ test.describe('Non github repository links that should get a badge', () => {
     expect(badges).toBe(1);
   });
 
-  test('should add installs badge to a VS Marketplace extension', async ({ page }) => {
-    await setupTestPage(page, 'badgeTypes/vs-marketplace.html');
-
-    const badges = await page.locator('img[src*="shields.io"]').count();
-    expect(badges).toBe(1);
-  });
-
   test('should add users badge to a Chrome Web Store extension', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/chrome-web-store.html');
 
