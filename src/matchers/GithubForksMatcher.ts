@@ -2,7 +2,7 @@ import { blackList } from "../blackList";
 import { getCurrentUrl } from "../config";
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/github/forks/{userName}/{repoName}';
+const badgeUrlTemplate = 'https://img.shields.io/github/forks/{userName}/{repoName}.svg';
 
 export class GithubForksMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {

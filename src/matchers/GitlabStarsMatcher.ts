@@ -1,6 +1,6 @@
 import { BadgeLinkInfo, BadgeMatcher, MatcherResult } from "../types";
 
-const badgeUrlTemplate = 'https://img.shields.io/gitlab/stars/{projectId}';
+const badgeUrlTemplate = 'https://img.shields.io/gitlab/stars/{projectId}.svg';
 
 export class GitlabStarsMatcher implements BadgeMatcher {
   match(link: BadgeLinkInfo): MatcherResult | null {
