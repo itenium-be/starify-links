@@ -12,6 +12,8 @@ import { YoutubeChannelSubscribersMatcher } from '../src/matchers/YoutubeChannel
 import { GithubGistStarsMatcher } from '../src/matchers/GithubGistStarsMatcher';
 import { PackagistDownloadsMatcher } from '../src/matchers/PackagistDownloadsMatcher';
 import { SourceForgeDownloadsMatcher } from '../src/matchers/SourceForgeDownloadsMatcher';
+import { PkgGoDevMatcher } from '../src/matchers/PkgGoDevMatcher';
+import { GithubRepositoryMatcher } from '../src/matchers/GithubRepositoryMatcher';
 
 const baseUrlOf = (m: BadgeMatcher, href: string) => m.match({ href, el: undefined as any })?.baseUrl;
 
@@ -68,6 +70,11 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
       'https://sourceforge.net/projects/sevenzip/',
       'https://sourceforge.net/projects/sevenzip/files/',
     ]},
+    { name: 'pkg.go.dev', matcher: new PkgGoDevMatcher(), variants: [
+      'https://pkg.go.dev/github.com/gin-gonic/gin',
+      'https://pkg.go.dev/github.com/gin-gonic/gin/binding',
+      'https://pkg.go.dev/github.com/gin-gonic/gin@v1.9.1',
+    ]},
     { name: 'GitHub Gist', matcher: new GithubGistStarsMatcher(), variants: [
       'https://gist.github.com/Laoujin/12f5d2f76d51ee6c0a49',
       'https://gist.github.com/Laoujin/12f5d2f76d51ee6c0a49/revisions',
@@ -89,6 +96,16 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
     })?.badgeUrl;
     expect(badgeUrl).toContain('gitlab-org%2Fgitlab.svg');
     expect(badgeUrl).not.toContain('issues');
+  });
+
+  test('pkg.go.dev emits the GitHub repo badge and dedupes with a direct github.com link', () => {
+    const result = new PkgGoDevMatcher().match({
+      href: 'https://pkg.go.dev/github.com/gin-gonic/gin/binding', el: undefined as any,
+    });
+    expect(result?.badgeType).toBe('githubRepository');
+    expect(result?.badgeUrl).toContain('github/stars/gin-gonic/gin.svg');
+    expect(result?.baseUrl).toBe(new GithubRepositoryMatcher()
+      .match({ href: 'https://github.com/gin-gonic/gin', el: undefined as any })?.baseUrl);
   });
 
   test('Lemmy keeps communities and users distinct', () => {

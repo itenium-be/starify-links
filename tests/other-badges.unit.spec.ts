@@ -367,4 +367,11 @@ test.describe('Package registry links that should get a downloads badge', () => 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
+
+  test('should add the GitHub stars badge to a pkg.go.dev module link', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/pkg-go-dev.html');
+
+    const badges = await page.locator('img[src*="shields.io/github/stars/gin-gonic/gin"]').count();
+    expect(badges).toBe(1);
+  });
 });

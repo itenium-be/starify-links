@@ -7,6 +7,7 @@ import { DockerPullsMatcher } from "./DockerPullsMatcher";
 import { NpmDownloadsMatcher } from "./NpmDownloadsMatcher";
 import { NugetDownloadsMatcher } from "./NugetDownloadsMatcher";
 import { PackagistDownloadsMatcher } from "./PackagistDownloadsMatcher";
+import { PkgGoDevMatcher } from "./PkgGoDevMatcher";
 import { PypiDownloadsMatcher } from "./PypiDownloadsMatcher";
 import { SourceForgeDownloadsMatcher } from "./SourceForgeDownloadsMatcher";
 import { RubyGemsDownloadsMatcher } from "./RubyGemsDownloadsMatcher";
@@ -58,6 +59,7 @@ export const badgesConfig: BadgeMatcher[] = [
   new GithubGistStarsMatcher(),
   new GithubWatchersMatcher(),
   new GithubForksMatcher(),
+  new PkgGoDevMatcher(),
   new GitlabStarsMatcher(),
   new GitlabForksMatcher(),
   new SubredditSubscribersMatcher(),
