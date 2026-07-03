@@ -38,6 +38,13 @@ test.describe('Badge Rendering against html fixtures', () => {
     await expect(badges).toHaveCount(0);
   });
 
+  test('should still badge repos owned by the github org', async ({ page }) => {
+    await setupTestPage(page, 'github-org-repo.html');
+
+    const badges = page.locator('img[src*="shields.io"]');
+    await expect(badges).toHaveCount(1);
+  });
+
   test('should work correctly with GitHub and other links', async ({ page }) => {
     await setupTestPage(page, 'integration.html');
 

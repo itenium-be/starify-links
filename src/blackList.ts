@@ -8,4 +8,8 @@ export const blackList = [
   'mcp', 'stars', 'explore', 'trending', 'resources', 'readme',
   'security', 'enterprise', 'solutions', 'customer-stories',
   'partners', 'education', 'search', 'advisories', 'repos',
+  'mobile', 'edu', 'newsletter', 'team', 'business', 'models',
+  'spark', 'git-guides', 'events', 'join', 'login', 'logout',
+  'signup', 'government', 'open-source', 'discussions',
+  'dashboard', 'home', 'sitemap',
 ];
