@@ -45,7 +45,7 @@ import { isSameUrlNavigation } from './navigationFilter';
 })();
 
 
-export function removeAllBadges() {
+function removeAllBadges() {
   const badges = document.querySelectorAll('img[src*="shields.io/github/stars"]');
   badges.forEach(badge => badge.remove());
   console.info(`starify-links: Removed ${badges.length} badges.`);
