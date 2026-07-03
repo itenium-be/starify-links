@@ -10,6 +10,6 @@ export const blackList = [
   'partners', 'education', 'search', 'advisories', 'repos',
   'mobile', 'edu', 'newsletter', 'team', 'business', 'models',
   'spark', 'git-guides', 'events', 'join', 'login', 'logout',
-  'signup', 'government', 'open-source', 'discussions',
+  'signup', 'customer-terms', 'open-source', 'discussions',
   'dashboard', 'home', 'sitemap',
 ];
