@@ -430,5 +430,35 @@ export const badgesUserConfig: BadgesUserConfig = {
     style: 'social' as const,
     label: 'Backers',
     logo: 'opencollective',
+  },
+  githubSponsors: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Sponsors',
+    logo: 'githubsponsors',
+  },
+  aurVotes: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Votes',
+    logo: 'archlinux',
+  },
+  liberapayPatrons: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Patrons',
+    logo: 'liberapay',
+  },
+  eclipseMarketplaceDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'eclipseide',
+  },
+  myGetDownloads: {
+    enabled: true,
+    style: 'social' as const,
+    label: 'Downloads',
+    logo: 'nuget',
   }
 }

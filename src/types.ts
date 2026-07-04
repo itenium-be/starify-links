@@ -226,4 +226,14 @@ export type BadgesUserConfig = {
   steamWorkshopDownloads: BadgeConfig;
   /** See: https://shields.io/badges/open-collective-backers */
   openCollectiveBackers: BadgeConfig;
+  /** See: https://shields.io/badges/git-hub-sponsors */
+  githubSponsors: BadgeConfig;
+  /** See: https://shields.io/badges/aur-votes */
+  aurVotes: BadgeConfig;
+  /** See: https://shields.io/badges/liberapay-patrons */
+  liberapayPatrons: BadgeConfig;
+  /** See: https://shields.io/badges/eclipse-marketplace-downloads */
+  eclipseMarketplaceDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/my-get-downloads */
+  myGetDownloads: BadgeConfig;
 }

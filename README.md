@@ -98,7 +98,10 @@ chrome://extensions/
   - [Pub](https://pub.dev/packages/provider)
   - [Open VSX](https://open-vsx.org/extension/redhat/java)
   - [JetBrains Plugin](https://plugins.jetbrains.com/plugin/9568-go)
+  - [Eclipse Marketplace](https://marketplace.eclipse.org/content/notepad4e)
   - [Flathub](https://flathub.org/apps/org.gimp.GIMP)
+  - [MyGet](https://www.myget.org/feed/mongodb/package/nuget/MongoDB.Driver)
+  - [AUR](https://aur.archlinux.org/packages/yay)
 - Other badges:
   - [Github Gist](https://gist.github.com/Laoujin/12f5d2f76d51ee6c0a49)
   - [Subreddit](https://www.reddit.com/r/ProgrammerHumor/?tl=en)
@@ -116,6 +119,8 @@ chrome://extensions/
   - [StackExchange Reputation](https://stackoverflow.com/users/22656/jon-skeet)
   - [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=450814997)
   - [OpenCollective Backers](https://opencollective.com/webpack)
+  - [GitHub Sponsors](https://github.com/sponsors/sindresorhus)
+  - [Liberapay Patrons](https://liberapay.com/Changaco)
 
 
 # Similar Extensions

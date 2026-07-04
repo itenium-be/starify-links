@@ -390,6 +390,11 @@ test.describe('More registries and platforms', () => {
     ['a StackExchange user profile', 'stackexchange'],
     ['a Steam Workshop item', 'steam'],
     ['an OpenCollective collective', 'opencollective'],
+    ['a GitHub Sponsors profile', 'github-sponsors'],
+    ['an AUR package', 'aur'],
+    ['a Liberapay profile', 'liberapay'],
+    ['an Eclipse Marketplace solution', 'eclipse-marketplace'],
+    ['a MyGet package', 'myget'],
   ];
 
   for (const [label, fixture] of fixtures) {
