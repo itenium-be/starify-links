@@ -40,7 +40,7 @@
     "description":  "Add star badges to links to GitHub, GitLab, Chrome Web Store, Reddit, and more",
     "name":         "Starify Links",
     "short_name":   "StarifyLinks",
-    "version":      "2.2",
+    "version":      "2.3",
     "icons": {
         "128": "favicon.png"
     },
