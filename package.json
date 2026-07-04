@@ -9,6 +9,7 @@
     "@types/chrome": "^0.1.24",
     "@types/gulp": "^4.0.17",
     "@types/gulp-zip": "^4.0.4",
+    "@types/minimatch": "5.1.2",
     "@types/node": "^24.8.1",
     "del": "^4.0.0",
     "gulp": "^4.0.0",

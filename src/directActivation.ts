@@ -33,7 +33,7 @@ export async function getDirectActivationConfig(): Promise<DirectActivation[]> {
 
   return new Promise((resolve) => {
     chrome.storage.sync.get(['directActivationConfig'], (result) => {
-      const config = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
+      const config = deserializeDirectActivationConfig((result['directActivationConfig'] as any[]) || activateDirectlyOn);
       cachedDirectActivationConfig = config;
       resolve(config);
     });
