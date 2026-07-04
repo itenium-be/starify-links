@@ -1,11 +1,16 @@
 import { findConfig } from './directActivation';
 import { findAndConvertLinks } from './findAndConvertLinks';
 import { isSameUrlNavigation } from './navigationFilter';
+import { waitForDomIdle } from './waitForDomIdle';
 
 (async () => {
   const activator = await findConfig();
   if (activator) {
-    findAndConvertLinks();
+    if (activator.deferUntilIdle) {
+      waitForDomIdle(() => findAndConvertLinks());
+    } else {
+      findAndConvertLinks();
+    }
 
     if (activator.observeNavigation) {
       (window as any).navigation?.addEventListener('navigate', (event: any) => {

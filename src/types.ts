@@ -35,6 +35,12 @@ export type DirectActivation = {
    * to add the same badge there as well.
    */
   extraBadgeSelector?: string;
+  /**
+   * Server-rendered sites that hydrate client-side (e.g. Brave Search, Svelte)
+   * crash if the DOM is mutated before hydration finishes. Set true to defer the
+   * initial scan until the DOM has settled after load.
+   */
+  deferUntilIdle?: boolean;
 }
 
 export type BadgeInfo = {
