@@ -41,6 +41,12 @@ export type DirectActivation = {
    * initial scan until the DOM has settled after load.
    */
   deferUntilIdle?: boolean;
+  /**
+   * CSS selector for a container whose links must not be badged,
+   * e.g. Brave's knowledge-panel profile row that crams badges into
+   * a favicon-sized icon strip.
+   */
+  exclude?: string;
 }
 
 export type BadgeInfo = {

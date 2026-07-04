@@ -1,16 +1,19 @@
 import { badgeRenderer } from "./badgeRenderer";
 import { getBadgesUserConfig, shieldsConfig } from "./config";
+import { findConfig } from "./directActivation";
 import { unwrapHref } from "./sites";
 import { badgesConfig } from "./matchers/badgesConfig";
 import { BadgeConfig, BadgeInfo, BadgeLinkInfo } from "./types";
 
 export async function findAndConvertLinks(linkContainers?: NodeListOf<Element>, allowDuplicates?: boolean) {
   const userConfig = await getBadgesUserConfig();
+  const activator = await findConfig();
   const newBadges: BadgeInfo[] = [];
 
-  const links = linkContainers
+  const links = (linkContainers
     ? Array.from(linkContainers).flatMap(c => c.tagName === 'A' ? [c as HTMLAnchorElement] : Array.from(c.querySelectorAll('a')))
-    : Array.from(document.getElementsByTagName('a'));
+    : Array.from(document.getElementsByTagName('a')))
+    .filter(a => !activator?.exclude || !a.closest(activator.exclude));
 
   const githubLinks: BadgeLinkInfo[] = links
     .map(a => ({href: unwrapHref((a.getAttribute('href') || '').trim()), el: a}));

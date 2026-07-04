@@ -19,4 +19,10 @@ test.describe('Brave Rendering against html fixtures', () => {
     // ...replaced in place on the site-name row.
     await expect(page.locator('.site-name-wrapper > img[src*="shields.io"]')).toHaveCount(1);
   });
+
+  test('does not badge the infobox profile-links row', async ({ page }) => {
+    await setupBravePage(page, 'brave.html');
+
+    await expect(page.locator('.infobox-profiles-body img[src*="shields.io"]')).toHaveCount(0);
+  });
 });

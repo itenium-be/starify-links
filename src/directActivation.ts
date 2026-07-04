@@ -9,7 +9,7 @@ export const activateDirectlyOn: DirectActivation[] = [
   {label: 'Stack Exchange Sites', enabled: true, url: /^https:\/\/.*\.stackexchange\.com/},
   {label: 'Google Search', enabled: true, url: googleUrl},
   {label: 'Bing Search', enabled: true, url: bingUrl},
-  {label: 'Brave Search', enabled: true, url: 'https://search.brave.com/search', deferUntilIdle: true},
+  {label: 'Brave Search', enabled: true, url: 'https://search.brave.com/search', deferUntilIdle: true, exclude: '.infobox-profiles-body'},
   {label: 'Yahoo Search', enabled: true, url: /^https:\/\/([a-z]+\.)?search\.yahoo\.com\/search/},
   {label: 'GitHub Issues', enabled: true, url: /https:\/\/github.com\/[^/#]+\/[^/#]+\/issues\/\d+/, observeNavigation: true, observe: ':has(> [data-testid="github-avatar"])', observeAllowDuplicates: true},
   {label: 'GitHub', enabled: true, url: /https:\/\/github.com/, observeNavigation: true},
