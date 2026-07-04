@@ -4,10 +4,11 @@ import { brave } from "./brave";
 import { duckDuckGo } from "./duckDuckGo";
 import { githubIssues } from "./githubIssues";
 import { google } from "./google";
+import { hackerNews } from "./hackerNews";
 import { yahoo } from "./yahoo";
 import { InsertContext, SiteHandler } from "./types";
 
-export const siteHandlers: SiteHandler[] = [google, bing, yahoo, brave, duckDuckGo, githubIssues];
+export const siteHandlers: SiteHandler[] = [google, bing, yahoo, brave, duckDuckGo, githubIssues, hackerNews];
 
 export function findSiteHandler(currentUrl: string): SiteHandler | undefined {
   return siteHandlers.find(handler => isWhitelisted(handler.url, currentUrl));

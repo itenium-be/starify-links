@@ -26,6 +26,10 @@ test.describe('findSiteHandler', () => {
     expect(findSiteHandler('https://search.yahoo.com/search?p=react')?.id).toBe('yahoo');
   });
 
+  test('matches Hacker News', () => {
+    expect(findSiteHandler('https://news.ycombinator.com/')?.id).toBe('hackernews');
+  });
+
   test('returns undefined for unhandled sites', () => {
     expect(findSiteHandler('https://example.com/')).toBeUndefined();
   });
