@@ -353,4 +353,50 @@ test.describe('Package registry links that should get a downloads badge', () => 
     const badges = await page.locator('img[src*="shields.io"]').count();
     expect(badges).toBe(1);
   });
+
+  test('should add downloads badge to a Packagist package', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/packagist.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add downloads badge to a SourceForge project', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/sourceforge.html');
+
+    const badges = await page.locator('img[src*="shields.io"]').count();
+    expect(badges).toBe(1);
+  });
+
+  test('should add the GitHub stars badge to a pkg.go.dev module link', async ({ page }) => {
+    await setupTestPage(page, 'badgeTypes/pkg-go-dev.html');
+
+    const badges = await page.locator('img[src*="shields.io/github/stars/gin-gonic/gin"]').count();
+    expect(badges).toBe(1);
+  });
+});
+
+test.describe('More registries and platforms', () => {
+  const fixtures: Array<[string, string]> = [
+    ['a PowerShell Gallery package', 'powershellgallery'],
+    ['a Chocolatey package', 'chocolatey'],
+    ['an Open VSX extension', 'open-vsx'],
+    ['a Homebrew formula', 'homebrew'],
+    ['a Conda package', 'conda'],
+    ['a Hex.pm package', 'hexpm'],
+    ['a Pub package', 'pub'],
+    ['a JetBrains plugin', 'jetbrains'],
+    ['a Flathub app', 'flathub'],
+    ['a StackExchange user profile', 'stackexchange'],
+    ['a Steam Workshop item', 'steam'],
+    ['an OpenCollective collective', 'opencollective'],
+  ];
+
+  for (const [label, fixture] of fixtures) {
+    test(`should add a badge to ${label}`, async ({ page }) => {
+      await setupTestPage(page, `badgeTypes/${fixture}.html`);
+
+      await expect(page.locator('img[src*="shields.io"]')).toHaveCount(1, { timeout: 10_000 });
+    });
+  }
 });

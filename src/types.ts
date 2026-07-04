@@ -198,4 +198,32 @@ export type BadgesUserConfig = {
   rubyGemsDownloads: BadgeConfig;
   /** See: https://shields.io/badges/docker-pulls */
   dockerPulls: BadgeConfig;
+  /** See: https://shields.io/badges/packagist-downloads */
+  packagistDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/sourceforge-downloads */
+  sourceForgeDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/power-shell-gallery-downloads */
+  powershellGalleryDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/chocolatey-downloads */
+  chocolateyDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/open-vsx-downloads */
+  openVsxDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/homebrew-downloads */
+  homebrewDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/conda-downloads */
+  condaDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/hex-downloads */
+  hexpmDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/pub-monthly-downloads */
+  pubDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/jet-brains-plugin-downloads */
+  jetbrainsPluginDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/flathub-downloads */
+  flathubDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/stack-exchange-reputation */
+  stackExchangeReputation: BadgeConfig;
+  /** See: https://shields.io/badges/steam-downloads */
+  steamWorkshopDownloads: BadgeConfig;
+  /** See: https://shields.io/badges/open-collective-backers */
+  openCollectiveBackers: BadgeConfig;
 }

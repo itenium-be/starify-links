@@ -118,6 +118,31 @@ export async function setupTestPage(page: Page, fixtureName: string) {
 }
 
 
+// 1x1 transparent PNG so badge <img>.onload fires deterministically without
+// hitting (and getting rate-limited by) the real shields.io.
+const STUB_PNG = Buffer.from(
+  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==',
+  'base64');
+
+/** Serve `bodyHtml` under a real google search URL so the Google-specific
+ *  branch of badgeRenderer runs (it keys off document.location.href). */
+export async function setupGooglePage(page: Page, bodyHtml: string) {
+  await page.route('https://img.shields.io/**', r =>
+    r.fulfill({ contentType: 'image/png', body: STUB_PNG }));
+  await page.route('https://www.google.com/search*', r =>
+    r.fulfill({ contentType: 'text/html', body: `<!DOCTYPE html><html><head></head><body>${bodyHtml}</body></html>` }));
+
+  await page.goto('https://www.google.com/search?q=test');
+  await mockChromeAPI(page);
+
+  if (!scriptContent) {
+    const scriptPath = path.join(__dirname, '../dist/starify-links.user.js');
+    scriptContent = fs.readFileSync(scriptPath, 'utf-8');
+  }
+  await page.addScriptTag({ content: scriptContent });
+  await triggerStarify(page);
+}
+
 export async function triggerStarify(page: Page) {
   await page.evaluate(() => {
     const callback = (window as any).__chromeMessageCallback;

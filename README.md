@@ -88,6 +88,17 @@ chrome://extensions/
   - [pkg.go](https://pkg.go.dev/github.com/gin-gonic/gin)
   - [Docker Hub (official)](https://hub.docker.com/_/nginx)
   - [Docker Hub (user)](https://hub.docker.com/r/grafana/grafana)
+  - [Packagist](https://packagist.org/packages/guzzlehttp/guzzle)
+  - [SourceForge](https://sourceforge.net/projects/sevenzip/)
+  - [PowerShell Gallery](https://www.powershellgallery.com/packages/Pester)
+  - [Chocolatey](https://community.chocolatey.org/packages/git)
+  - [Homebrew](https://formulae.brew.sh/formula/wget)
+  - [Conda](https://anaconda.org/conda-forge/numpy)
+  - [Hex.pm](https://hex.pm/packages/phoenix)
+  - [Pub](https://pub.dev/packages/provider)
+  - [Open VSX](https://open-vsx.org/extension/redhat/java)
+  - [JetBrains Plugin](https://plugins.jetbrains.com/plugin/9568-go)
+  - [Flathub](https://flathub.org/apps/org.gimp.GIMP)
 - Other badges:
   - [Github Gist](https://gist.github.com/Laoujin/12f5d2f76d51ee6c0a49)
   - [Subreddit](https://www.reddit.com/r/ProgrammerHumor/?tl=en)
@@ -102,6 +113,9 @@ chrome://extensions/
   - [Wordpress Plugins/Themes](https://wordpress.org/plugins/akismet/)
   - [Chrome Extension Users](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm)
   - [Firefox Addon Users](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
+  - [StackExchange Reputation](https://stackoverflow.com/users/22656/jon-skeet)
+  - [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=450814997)
+  - [OpenCollective Backers](https://opencollective.com/webpack)
 
 
 # Similar Extensions
