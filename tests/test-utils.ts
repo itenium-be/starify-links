@@ -143,6 +143,28 @@ export async function setupGooglePage(page: Page, bodyHtml: string) {
   await triggerStarify(page);
 }
 
+/** Serve `fixtureName` under a real Yahoo search URL so the Yahoo site
+ *  handler runs (findSiteHandler keys off document.location.href). */
+export async function setupYahooPage(page: Page, fixtureName: string) {
+  const fixturePath = path.join(__dirname, `./fixtures/${fixtureName}`);
+  const bodyHtml = fs.readFileSync(fixturePath, 'utf-8');
+
+  await page.route('https://img.shields.io/**', r =>
+    r.fulfill({ contentType: 'image/png', body: STUB_PNG }));
+  await page.route('https://search.yahoo.com/search*', r =>
+    r.fulfill({ contentType: 'text/html', body: `<!DOCTYPE html><html><head></head><body>${bodyHtml}</body></html>` }));
+
+  await page.goto('https://search.yahoo.com/search?p=test');
+  await mockChromeAPI(page);
+
+  if (!scriptContent) {
+    const scriptPath = path.join(__dirname, '../dist/starify-links.user.js');
+    scriptContent = fs.readFileSync(scriptPath, 'utf-8');
+  }
+  await page.addScriptTag({ content: scriptContent });
+  await triggerStarify(page);
+}
+
 export async function triggerStarify(page: Page) {
   await page.evaluate(() => {
     const callback = (window as any).__chromeMessageCallback;
