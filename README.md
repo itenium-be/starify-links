@@ -11,6 +11,7 @@ Activates directly on `activateDirectlyOn` array (in `src/directActivation.ts`).
 - Search engines (Google, Bing, ...)
 - GitHub (awesome lists!)
 - Package managers (npmjs, nuget, ...)
+- Link aggregators (Hacker News, Lobsters, Libraries.io)
 
 
 # Development
