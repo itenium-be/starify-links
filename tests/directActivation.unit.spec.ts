@@ -13,6 +13,18 @@ test.describe('activateDirectlyOn whitelist', () => {
     expect(isWhitelistedUrl('https://search.yahoo.com/search?p=react')).toBe(true);
   });
 
+  test('activates on Hacker News', () => {
+    expect(isWhitelistedUrl('https://news.ycombinator.com/item?id=42')).toBe(true);
+  });
+
+  test('activates on Lobsters', () => {
+    expect(isWhitelistedUrl('https://lobste.rs/s/abc123/some_story')).toBe(true);
+  });
+
+  test('activates on Libraries.io', () => {
+    expect(isWhitelistedUrl('https://libraries.io/npm/react')).toBe(true);
+  });
+
   test('does not activate on an unrelated site', () => {
     expect(isWhitelistedUrl('https://example.com/')).toBe(false);
   });

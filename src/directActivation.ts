@@ -21,6 +21,9 @@ export const activateDirectlyOn: DirectActivation[] = [
   {label: 'crates.io', enabled: true, url: 'https://crates.io/crates/', observe: ':has(> a)'},
   {label: 'Go Packages', enabled: true, url: 'https://pkg.go.dev/github.com/', extraBadgeSelector: '.UnitMeta-repo'},
   {label: 'DuckDuckGo', enabled: true, url: 'https://duckduckgo.com', observe: '.react-results--main', observeAllowDuplicates: false},
+  {label: 'Hacker News', enabled: true, url: 'https://news.ycombinator.com'},
+  {label: 'Lobsters', enabled: true, url: 'https://lobste.rs'},
+  {label: 'Libraries.io', enabled: true, url: 'https://libraries.io'},
 ];
 
 
