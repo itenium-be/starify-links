@@ -12,7 +12,7 @@ export async function getBadgesUserConfig(): Promise<BadgesUserConfig> {
 
   return new Promise((resolve) => {
     chrome.storage.sync.get(['badgesUserConfig'], (result) => {
-      const config = result.badgesUserConfig || badgesUserConfig;
+      const config = (result['badgesUserConfig'] as BadgesUserConfig) || badgesUserConfig;
       cachedBadgesUserConfig = config;
       resolve(config);
     });

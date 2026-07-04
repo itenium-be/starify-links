@@ -13,7 +13,7 @@ export function setupDirectActivationOptions() {
 
 function loadDirectActivationList() {
   chrome.storage.sync.get(['directActivationConfig'], (result) => {
-    const config: DirectActivation[] = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
+    const config: DirectActivation[] = deserializeDirectActivationConfig((result['directActivationConfig'] as any[]) || activateDirectlyOn);
 
     const listEl = document.getElementById('directActivationList')!;
     listEl.innerHTML = config.map((activation, index) => {
@@ -157,7 +157,7 @@ function handleDelete(e: Event) {
   }
 
   chrome.storage.sync.get(['directActivationConfig'], (result) => {
-    const config = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
+    const config = deserializeDirectActivationConfig((result['directActivationConfig'] as any[]) || activateDirectlyOn);
     config.splice(index, 1);
     chrome.storage.sync.set({ directActivationConfig: serializeDirectActivationConfig(config) }, () => {
       loadDirectActivationList();
@@ -168,7 +168,7 @@ function handleDelete(e: Event) {
 
 function addNewSite() {
   chrome.storage.sync.get(['directActivationConfig'], (result) => {
-    const config = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
+    const config = deserializeDirectActivationConfig((result['directActivationConfig'] as any[]) || activateDirectlyOn);
 
     const newSite: DirectActivation = {
       label: '',
@@ -195,7 +195,7 @@ function addNewSite() {
 
 function saveDirectActivationConfig() {
   chrome.storage.sync.get(['directActivationConfig'], (result) => {
-    const config = deserializeDirectActivationConfig(result.directActivationConfig || activateDirectlyOn);
+    const config = deserializeDirectActivationConfig((result['directActivationConfig'] as any[]) || activateDirectlyOn);
 
     const items = document.querySelectorAll('#directActivationList .accordion-item');
     console.log('Found accordion items:', items.length);

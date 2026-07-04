@@ -140,7 +140,7 @@ function generateBadgeConfigUI(badgeKey: keyof BadgesUserConfig, label: string, 
 
 function loadBadgesConfig() {
   chrome.storage.sync.get(['badgesUserConfig'], (result) => {
-    const config: BadgesUserConfig = result.badgesUserConfig || badgesUserConfig;
+    const config: BadgesUserConfig = (result['badgesUserConfig'] as BadgesUserConfig) || badgesUserConfig;
 
     (Object.keys(config) as Array<keyof BadgesUserConfig>).forEach(badgeKey => {
       const badgeConfig = config[badgeKey];
