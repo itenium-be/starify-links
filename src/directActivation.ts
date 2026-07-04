@@ -23,7 +23,7 @@ export const activateDirectlyOn: DirectActivation[] = [
   {label: 'DuckDuckGo', enabled: true, url: 'https://duckduckgo.com', observe: '.react-results--main', observeAllowDuplicates: false},
   {label: 'Hacker News', enabled: true, url: 'https://news.ycombinator.com'},
   {label: 'Lobsters', enabled: true, url: 'https://lobste.rs'},
-  {label: 'Libraries.io', enabled: true, url: 'https://libraries.io'},
+  {label: 'Libraries.io', enabled: true, url: 'https://libraries.io', exclude: 'div:has(> h3[data-ga-tracked-el="top-contributors"])'},
 ];
 
 
