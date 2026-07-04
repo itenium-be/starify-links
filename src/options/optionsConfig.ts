@@ -26,6 +26,7 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'githubUserStars', label: 'User Stars', docsUrl: 'https://shields.io/badges/git-hub-users-stars' },
       { key: 'githubFollowers', label: 'User Followers', docsUrl: 'https://shields.io/badges/git-hub-followers' },
       { key: 'githubGistStars', label: 'Gist Stars', docsUrl: 'https://shields.io/badges/git-hub-gist-stars' },
+      { key: 'githubSponsors', label: 'Sponsors', docsUrl: 'https://shields.io/badges/git-hub-sponsors' },
     ]
   },
   {
@@ -80,6 +81,7 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'wordPressThemeStars', label: 'WordPress Theme Stars', docsUrl: 'https://shields.io/badges/word-press-theme-stars' },
       { key: 'openVsxDownloads', label: 'Open VSX Downloads', docsUrl: 'https://shields.io/badges/open-vsx-downloads' },
       { key: 'jetbrainsPluginDownloads', label: 'JetBrains Plugin Downloads', docsUrl: 'https://shields.io/badges/jet-brains-plugin-downloads' },
+      { key: 'eclipseMarketplaceDownloads', label: 'Eclipse Marketplace Downloads', docsUrl: 'https://shields.io/badges/eclipse-marketplace-downloads' },
     ]
   },
   {
@@ -110,6 +112,8 @@ export const badgeCategories: BadgeCategory[] = [
       { key: 'hexpmDownloads', label: 'Hex.pm Downloads', docsUrl: 'https://shields.io/badges/hex-downloads' },
       { key: 'pubDownloads', label: 'Pub Downloads', docsUrl: 'https://shields.io/badges/pub-monthly-downloads' },
       { key: 'flathubDownloads', label: 'Flathub Installs', docsUrl: 'https://shields.io/badges/flathub-downloads' },
+      { key: 'myGetDownloads', label: 'MyGet Downloads', docsUrl: 'https://shields.io/badges/my-get-downloads' },
+      { key: 'aurVotes', label: 'AUR Votes', docsUrl: 'https://shields.io/badges/aur-votes' },
     ]
   },
   {
@@ -117,6 +121,7 @@ export const badgeCategories: BadgeCategory[] = [
     badges: [
       { key: 'nostrBandFollowers', label: 'Nostr Band Followers', docsUrl: 'https://shields.io/badges/nostr-band-followers' },
       { key: 'openCollectiveBackers', label: 'OpenCollective Backers', docsUrl: 'https://shields.io/badges/open-collective-backers' },
+      { key: 'liberapayPatrons', label: 'Liberapay Patrons', docsUrl: 'https://shields.io/badges/liberapay-patrons' },
     ]
   },
 ];

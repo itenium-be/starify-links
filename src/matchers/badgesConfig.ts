@@ -23,6 +23,11 @@ import { FlathubDownloadsMatcher } from "./FlathubDownloadsMatcher";
 import { StackExchangeReputationMatcher } from "./StackExchangeReputationMatcher";
 import { SteamWorkshopDownloadsMatcher } from "./SteamWorkshopDownloadsMatcher";
 import { OpenCollectiveBackersMatcher } from "./OpenCollectiveBackersMatcher";
+import { GithubSponsorsMatcher } from "./GithubSponsorsMatcher";
+import { AurVotesMatcher } from "./AurVotesMatcher";
+import { LiberapayPatronsMatcher } from "./LiberapayPatronsMatcher";
+import { EclipseMarketplaceDownloadsMatcher } from "./EclipseMarketplaceDownloadsMatcher";
+import { MyGetDownloadsMatcher } from "./MyGetDownloadsMatcher";
 import { ChromeWebStoreMatcher } from "./ChromeWebStoreMatcher";
 import { ChromeWebStoreRatingCountMatcher } from "./ChromeWebStoreRatingCountMatcher";
 import { ChromeWebStoreRatingMatcher } from "./ChromeWebStoreRatingMatcher";
@@ -129,4 +134,9 @@ export const badgesConfig: BadgeMatcher[] = [
   new StackExchangeReputationMatcher(),
   new SteamWorkshopDownloadsMatcher(),
   new OpenCollectiveBackersMatcher(),
+  new GithubSponsorsMatcher(),
+  new AurVotesMatcher(),
+  new LiberapayPatronsMatcher(),
+  new EclipseMarketplaceDownloadsMatcher(),
+  new MyGetDownloadsMatcher(),
 ];

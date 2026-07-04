@@ -26,6 +26,11 @@ import { FlathubDownloadsMatcher } from '../src/matchers/FlathubDownloadsMatcher
 import { StackExchangeReputationMatcher } from '../src/matchers/StackExchangeReputationMatcher';
 import { SteamWorkshopDownloadsMatcher } from '../src/matchers/SteamWorkshopDownloadsMatcher';
 import { OpenCollectiveBackersMatcher } from '../src/matchers/OpenCollectiveBackersMatcher';
+import { GithubSponsorsMatcher } from '../src/matchers/GithubSponsorsMatcher';
+import { AurVotesMatcher } from '../src/matchers/AurVotesMatcher';
+import { LiberapayPatronsMatcher } from '../src/matchers/LiberapayPatronsMatcher';
+import { EclipseMarketplaceDownloadsMatcher } from '../src/matchers/EclipseMarketplaceDownloadsMatcher';
+import { MyGetDownloadsMatcher } from '../src/matchers/MyGetDownloadsMatcher';
 
 const baseUrlOf = (m: BadgeMatcher, href: string) => m.match({ href, el: undefined as any })?.baseUrl;
 
@@ -129,6 +134,27 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
     { name: 'OpenCollective', matcher: new OpenCollectiveBackersMatcher(), variants: [
       'https://opencollective.com/webpack',
       'https://opencollective.com/webpack/updates',
+    ]},
+    { name: 'GitHub Sponsors', matcher: new GithubSponsorsMatcher(), variants: [
+      'https://github.com/sponsors/sindresorhus',
+      'https://github.com/sponsors/sindresorhus?o=esb',
+      'https://github.com/sponsors/Sindresorhus',
+    ]},
+    { name: 'AUR', matcher: new AurVotesMatcher(), variants: [
+      'https://aur.archlinux.org/packages/yay',
+      'https://aur.archlinux.org/packages/yay?comments=all',
+    ]},
+    { name: 'Liberapay', matcher: new LiberapayPatronsMatcher(), variants: [
+      'https://liberapay.com/Changaco',
+      'https://liberapay.com/Changaco/donate',
+    ]},
+    { name: 'Eclipse Marketplace', matcher: new EclipseMarketplaceDownloadsMatcher(), variants: [
+      'https://marketplace.eclipse.org/content/notepad4e',
+      'https://marketplace.eclipse.org/content/notepad4e/metrics',
+    ]},
+    { name: 'MyGet', matcher: new MyGetDownloadsMatcher(), variants: [
+      'https://www.myget.org/feed/mongodb/package/nuget/MongoDB.Driver',
+      'https://www.myget.org/feed/mongodb/package/nuget/MongoDB.Driver/2.19.0',
     ]},
     { name: 'pkg.go.dev', matcher: new PkgGoDevMatcher(), variants: [
       'https://pkg.go.dev/github.com/gin-gonic/gin',
