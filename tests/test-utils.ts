@@ -187,6 +187,25 @@ export async function setupBravePage(page: Page, fixtureName: string) {
   await triggerStarify(page);
 }
 
+export async function setupGithubPage(page: Page, fixtureName: string, url = 'https://github.com/itenium-be/starify-links') {
+  const fixturePath = path.join(__dirname, `./fixtures/${fixtureName}`);
+  const bodyHtml = fs.readFileSync(fixturePath, 'utf-8');
+
+  await page.route('https://img.shields.io/**', r =>
+    r.fulfill({ contentType: 'image/png', body: STUB_PNG }));
+  await page.route('https://github.com/**', r =>
+    r.fulfill({ contentType: 'text/html', body: bodyHtml }));
+
+  await page.goto(url);
+  await mockChromeAPI(page);
+
+  if (!scriptContent) {
+    const scriptPath = path.join(__dirname, '../dist/starify-links.user.js');
+    scriptContent = fs.readFileSync(scriptPath, 'utf-8');
+  }
+  await page.addScriptTag({ content: scriptContent });
+}
+
 export async function triggerStarify(page: Page) {
   await page.evaluate(() => {
     const callback = (window as any).__chromeMessageCallback;
