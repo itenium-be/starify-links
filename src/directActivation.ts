@@ -12,7 +12,7 @@ export const activateDirectlyOn: DirectActivation[] = [
   {label: 'Brave Search', enabled: true, url: 'https://search.brave.com/search', deferUntilIdle: true, exclude: '.infobox-profiles-body'},
   {label: 'Yahoo Search', enabled: true, url: /^https:\/\/([a-z]+\.)?search\.yahoo\.com\/search/},
   {label: 'GitHub Issues', enabled: true, url: /https:\/\/github.com\/[^/#]+\/[^/#]+\/issues\/\d+/, observeNavigation: true, observe: ':has(> [data-testid="github-avatar"])', observeAllowDuplicates: true},
-  {label: 'GitHub', enabled: true, url: /https:\/\/github.com/, observeNavigation: true},
+  {label: 'GitHub', enabled: true, url: /https:\/\/github.com/, observeNavigation: true, deferUntilIdle: true, exclude: 'header, footer'},
   {label: 'npm', enabled: true, url: 'https://www.npmjs.com/package', replaceText: false, observeNavigation: true, extraBadgeSelector: ':has(> #repository, > #homePage)'},
   {label: 'NuGet', enabled: true, url: 'https://www.nuget.org/packages', extraBadgeSelector: ':has(> a[data-track="outbound-repository-url"])'},
   {label: 'VS Code Marketplace', enabled: true, url: 'https://marketplace.visualstudio.com', observe: '#repo-link-container'},
