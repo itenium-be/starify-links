@@ -52,16 +52,6 @@ export const badgeCategories: BadgeCategory[] = [
     ]
   },
   {
-    name: 'YouTube Badges',
-    badges: [
-      { key: 'youtubeVideoViews', label: 'Video Views', docsUrl: 'https://shields.io/badges/you-tube-video-views' },
-      { key: 'youtubeVideoLikes', label: 'Video Likes', docsUrl: 'https://shields.io/badges/you-tube-video-likes' },
-      { key: 'youtubeVideoComments', label: 'Video Comments', docsUrl: 'https://shields.io/badges/you-tube-video-comments' },
-      { key: 'youtubeChannelSubscribers', label: 'Channel Subscribers', docsUrl: 'https://shields.io/badges/you-tube-channel-subscribers' },
-      { key: 'youtubeChannelViews', label: 'Channel Views', docsUrl: 'https://shields.io/badges/you-tube-channel-views' },
-    ]
-  },
-  {
     name: 'Browser Extensions & Plugin Stores',
     badges: [
       { key: 'chromeWebStore', label: 'Chrome Web Store Users', docsUrl: 'https://shields.io/badges/chrome-web-store-users' },

@@ -4,7 +4,7 @@ Starify Links
 - [Blog post](https://itenium.be/blog/javascript/starify-links/)
 - [Chrome extension](https://chrome.google.com/webstore/detail/starify-github-repo-links/kpficnopciffopkhjpckhkgmnlakcmig)
 
-Add Stars badges to GitHub links, Reddit users, Wordpress plugins, Youtube channels, Chrome/Firefox add-ins, ...  
+Add Stars badges to GitHub links, Reddit users, Wordpress plugins, Chrome/Firefox add-ins, ...  
 Activates directly on `activateDirectlyOn` array (in `src/directActivation.ts`). For other websites, press `Alt + Shift + S` (configure in `chrome://extensions/shortcuts`)
 
 `activateDirectlyOn` includes:
@@ -110,8 +110,6 @@ chrome://extensions/
   - [Bluesky Followers](https://bsky.app/profile/bsky.app)
   - [Hackernews Karma](https://news.ycombinator.com/user?id=pg)
   - [Twitch Status](https://www.twitch.tv/shroud)
-  - [Youtube Channel](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ/videos)
-  - [Youtube Video](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
   - [Gitlab Repository](https://gitlab.com/gitlab-org/gitlab)
   - [Lemmy Subscribers](https://lemmy.ml/c/technology)
   - [Wordpress Plugins/Themes](https://wordpress.org/plugins/akismet/)

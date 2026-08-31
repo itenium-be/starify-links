@@ -112,37 +112,6 @@ export const badgesUserConfig: BadgesUserConfig = {
   },
 
 
-  // Youtube Video
-  youtubeVideoViews: {
-    enabled: true,
-    style: 'social' as const,
-    label: 'Views',
-  },
-  youtubeVideoLikes: {
-    enabled: false,
-    style: 'social' as const,
-    label: 'Likes',
-  },
-  youtubeVideoComments: {
-    enabled: false,
-    style: 'social' as const,
-    label: 'Comments',
-  },
-
-
-  // Youtube Channel
-  youtubeChannelViews: {
-    enabled: false,
-    style: 'social' as const,
-    label: 'Views',
-  },
-  youtubeChannelSubscribers: {
-    enabled: true,
-    style: 'social' as const,
-    label: 'Subscribers',
-  },
-
-
   twitterUrl: {
     enabled: false,
     style: 'social' as const,

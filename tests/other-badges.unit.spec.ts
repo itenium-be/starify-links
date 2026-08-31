@@ -79,41 +79,6 @@ test.describe('Non github repository links that should get a badge', () => {
     expect(badges).toBe(1);
   });
 
-  test('should add views badge to a YouTube video', async ({ page }) => {
-    await setupTestPage(page, 'badgeTypes/youtube-video-views.html');
-
-    const badges = await page.locator('img[src*="shields.io"]').count();
-    expect(badges).toBe(1);
-  });
-
-  test('should add likes badge to a YouTube video', async ({ page }) => {
-    await setupTestPage(page, 'badgeTypes/youtube-video-likes.html');
-
-    const badges = await page.locator('img[src*="shields.io"]').count();
-    expect(badges).toBe(1);
-  });
-
-  test('should add comments badge to a YouTube video', async ({ page }) => {
-    await setupTestPage(page, 'badgeTypes/youtube-video-comments.html');
-
-    const badges = await page.locator('img[src*="shields.io"]').count();
-    expect(badges).toBe(1);
-  });
-
-  test('should add views badge to a YouTube channel', async ({ page }) => {
-    await setupTestPage(page, 'badgeTypes/youtube-channel-views.html');
-
-    const badges = await page.locator('img[src*="shields.io"]').count();
-    expect(badges).toBe(1);
-  });
-
-  test('should add subscribers badge to a YouTube channel', async ({ page }) => {
-    await setupTestPage(page, 'badgeTypes/youtube-channel-subscribers.html');
-
-    const badges = await page.locator('img[src*="shields.io"]').count();
-    expect(badges).toBe(1);
-  });
-
   test.skip('should add URL badge to a Twitter tweet', async ({ page }) => {
     await setupTestPage(page, 'badgeTypes/twitter-url.html');
 

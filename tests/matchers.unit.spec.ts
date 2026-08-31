@@ -8,7 +8,6 @@ import { LemmyMatcher } from '../src/matchers/LemmyMatcher';
 import { ModrinthFollowersMatcher } from '../src/matchers/ModrinthFollowersMatcher';
 import { NostrBandFollowersMatcher } from '../src/matchers/NostrBandFollowersMatcher';
 import { ThunderstoreLikesMatcher } from '../src/matchers/ThunderstoreLikesMatcher';
-import { YoutubeChannelSubscribersMatcher } from '../src/matchers/YoutubeChannelSubscribersMatcher';
 import { GithubGistStarsMatcher } from '../src/matchers/GithubGistStarsMatcher';
 import { PackagistDownloadsMatcher } from '../src/matchers/PackagistDownloadsMatcher';
 import { SourceForgeDownloadsMatcher } from '../src/matchers/SourceForgeDownloadsMatcher';
@@ -73,10 +72,6 @@ test.describe('Matcher baseUrl canonicalization (dedup)', () => {
     { name: 'Thunderstore', matcher: new ThunderstoreLikesMatcher(), variants: [
       'https://thunderstore.io/c/lethal-company/p/tinyhoot/ShipLoot/',
       'https://thunderstore.io/p/tinyhoot/ShipLoot/',
-    ]},
-    { name: 'YouTube channel', matcher: new YoutubeChannelSubscribersMatcher(), variants: [
-      'https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ',
-      'https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ/videos',
     ]},
     { name: 'Packagist', matcher: new PackagistDownloadsMatcher(), variants: [
       'https://packagist.org/packages/guzzlehttp/guzzle',

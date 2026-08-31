@@ -63,11 +63,6 @@ import { WordPressPluginStarsMatcher } from "./WordPressPluginStarsMatcher";
 import { WordPressThemeDownloadsMatcher } from "./WordPressThemeDownloadsMatcher";
 import { WordPressThemeRatingMatcher } from "./WordPressThemeRatingMatcher";
 import { WordPressThemeStarsMatcher } from "./WordPressThemeStarsMatcher";
-import { YoutubeChannelSubscribersMatcher } from "./YoutubeChannelSubscribersMatcher";
-import { YoutubeChannelViewsMatcher } from "./YoutubeChannelViewsMatcher";
-import { YoutubeVideoCommentsMatcher } from "./YoutubeVideoCommentsMatcher";
-import { YoutubeVideoLikesMatcher } from "./YoutubeVideoLikesMatcher";
-import { YoutubeVideoViewsMatcher } from "./YoutubeVideoViewsMatcher";
 
 export const badgesConfig: BadgeMatcher[] = [
   new GithubRepositoryMatcher(),
@@ -85,11 +80,6 @@ export const badgesConfig: BadgeMatcher[] = [
   new BlueskyPostsMatcher(),
   new HackerNewsKarmaMatcher(),
   new TwitchStatusMatcher(),
-  new YoutubeVideoViewsMatcher(),
-  new YoutubeVideoLikesMatcher(),
-  new YoutubeVideoCommentsMatcher(),
-  new YoutubeChannelViewsMatcher(),
-  new YoutubeChannelSubscribersMatcher(),
   new TwitterUrlMatcher(),
   new TwitterFollowMatcher(),
   new ThunderstoreLikesMatcher(),

@@ -136,16 +136,6 @@ export type BadgesUserConfig = {
   hackerNewsKarma: BadgeConfig;
   /** See: https://shields.io/badges/twitch-status */
   twitchStatus: BadgeConfig;
-  /** See: https://shields.io/badges/you-tube-video-views */
-  youtubeVideoViews: BadgeConfig;
-  /** See: https://shields.io/badges/you-tube-video-likes */
-  youtubeVideoLikes: BadgeConfig;
-  /** See: https://shields.io/badges/you-tube-video-comments */
-  youtubeVideoComments: BadgeConfig;
-  /** See: https://shields.io/badges/you-tube-channel-views */
-  youtubeChannelViews: BadgeConfig;
-  /** See: https://shields.io/badges/you-tube-channel-subscribers */
-  youtubeChannelSubscribers: BadgeConfig;
   /** See: https://shields.io/badges/x-formerly-twitter-url */
   twitterUrl: BadgeConfig;
   /** See: https://shields.io/badges/x-formerly-twitter-follow */
