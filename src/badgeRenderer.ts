@@ -30,6 +30,7 @@ export async function badgeRenderer(badge: BadgeInfo) {
 
     const insert = findSiteHandler(currentUrl)?.insert ?? defaultInsert;
     insert({ badge, badgeImg });
+    counterInheritedFlip(badgeImg);
   };
   badgeImg.onerror = (err) => setTimeout(() => {
     // TODO: maybe we need to look at the exact statusCode here before deciding what to do?
@@ -38,4 +39,24 @@ export async function badgeRenderer(badge: BadgeInfo) {
     shieldsConfig.attempt++;
 
   }, shieldsConfig.retryMs * shieldsConfig.attempt);
+}
+
+
+function counterInheritedFlip(badgeImg: HTMLImageElement) {
+  let flipX = false;
+  let flipY = false;
+  for (let el: HTMLElement | null = badgeImg.parentElement; el; el = el.parentElement) {
+    const { transform } = getComputedStyle(el);
+    if (transform === 'none') {
+      continue;
+    }
+
+    const matrix = new DOMMatrixReadOnly(transform);
+    flipX = flipX !== (matrix.a < 0);
+    flipY = flipY !== (matrix.d < 0);
+  }
+
+  if (flipX || flipY) {
+    badgeImg.style.transform = `scale(${flipX ? -1 : 1}, ${flipY ? -1 : 1})`;
+  }
 }

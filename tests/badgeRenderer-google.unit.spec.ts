@@ -40,3 +40,28 @@ test.describe('Google badge rendering', () => {
     expect(errors.filter(e => /Unexpected layout/i.test(e))).toEqual([]);
   });
 });
+
+const FLIPPED_RESULT = `
+  <style>.V9tjod, .V9tjod .LC20lb { transform: scaleY(-1); }</style>
+  <div class="b8lM7"><span class="V9tjod"><a class="res" href="${REPO}"><h3 class="LC20lb">the title</h3></a></span></div>`;
+
+test.describe('Google flipped result wrappers', () => {
+  test('renders the badge upright inside a scaleY(-1) wrapper', async ({ page }) => {
+    await setupGooglePage(page, FLIPPED_RESULT);
+
+    const badge = page.locator('img[src*="shields.io/github/stars/facebook/react"]');
+    await expect(badge).toHaveCount(1);
+
+    const verticalScale = await badge.evaluate(img => {
+      let scale = 1;
+      for (let el: Element | null = img; el; el = el.parentElement) {
+        const {transform} = getComputedStyle(el);
+        if (transform !== 'none') {
+          scale *= new DOMMatrixReadOnly(transform).d;
+        }
+      }
+      return scale;
+    });
+    expect(verticalScale).toBeGreaterThan(0);
+  });
+});
