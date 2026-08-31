@@ -125,7 +125,6 @@ chrome://extensions/
 # Similar Extensions
 
 - [GitHub Stargazer](https://chromewebstore.google.com/detail/github-stargazer/pncmfniapibeljknpeoplfkhacmhobbk)
-- [GitHub Star Count](https://chromewebstore.google.com/detail/github-star-count/jahogeehepfohgakggfeeimokcgnmdid?hl=en)
 
 
 # Examples
